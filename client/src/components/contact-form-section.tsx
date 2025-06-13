@@ -122,7 +122,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Nome */}
                 <div>
-                  <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="name" className="text-sm font-semibold text-gray-300">
                     Nome *
                   </Label>
                   <Input
@@ -139,7 +139,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* WhatsApp */}
                 <div>
-                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-300">
                     WhatsApp *
                   </Label>
                   <Input
@@ -160,7 +160,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Link da loja */}
                 <div>
-                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-gray-300">
                     Link da loja *
                   </Label>
                   <Input
@@ -178,7 +178,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Faturamento mensal */}
                 <div>
-                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-gray-300">
                     Faturamento mensal da loja *
                   </Label>
                   <Select
@@ -204,7 +204,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Plataforma */}
                 <div>
-                  <Label htmlFor="platform" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="platform" className="text-sm font-semibold text-gray-300">
                     Plataforma *
                   </Label>
                   <Select
@@ -231,7 +231,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Investimento em tráfego */}
                 <div>
-                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-gray-300">
                     Quanto investe em tráfego por mês *
                   </Label>
                   <Select
@@ -267,7 +267,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     onFocus={() => trackFieldFocus('acknowledgment')}
                     className="mt-1"
                   />
-                  <Label htmlFor="acknowledgment" className="text-sm text-gray-700">
+                  <Label htmlFor="acknowledgment" className="text-sm text-gray-300">
                     <strong>Estou ciente de que este é um serviço pago e para negócios em escala</strong>
                   </Label>
                 </div>
