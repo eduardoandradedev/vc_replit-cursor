@@ -22,7 +22,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Send data to n8n webhook
-      console.log('Sending to webhook:', webhookUrl);
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
@@ -36,8 +35,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       if (!response.ok) {
-        console.error(`Webhook failed with status: ${response.status}`);
-        console.error('Response text:', await response.text());
         throw new Error(`Webhook request failed: ${response.status}`);
       }
 

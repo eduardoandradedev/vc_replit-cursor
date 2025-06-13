@@ -96,19 +96,19 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   };
 
   return (
-    <section id="contact-form" className="py-20 bg-brand-darker">
+    <section id="contact-form" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
               📥 Solicite contato com nosso time
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-lg text-gray-600">
               Preencha os dados abaixo para avaliarmos se há fit para nossa solução.
             </p>
           </div>
           
-          <Card className="card-dark border border-brand-blue/20">
+          <Card className="bg-gray-50 border border-gray-200">
             <CardContent className="p-8">
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {/* Honeypot field for bot protection */}
@@ -122,7 +122,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Nome */}
                 <div>
-                  <Label htmlFor="name" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
                     Nome *
                   </Label>
                   <Input
@@ -139,7 +139,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* WhatsApp */}
                 <div>
-                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-700">
                     WhatsApp *
                   </Label>
                   <Input
@@ -160,7 +160,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Link da loja */}
                 <div>
-                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-gray-700">
                     Link da loja *
                   </Label>
                   <Input
@@ -178,7 +178,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Faturamento mensal */}
                 <div>
-                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-gray-700">
                     Faturamento mensal da loja *
                   </Label>
                   <Select
@@ -204,7 +204,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Plataforma */}
                 <div>
-                  <Label htmlFor="platform" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="platform" className="text-sm font-semibold text-gray-700">
                     Plataforma *
                   </Label>
                   <Select
@@ -231,7 +231,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Investimento em tráfego */}
                 <div>
-                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-gray-300">
+                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-gray-700">
                     Quanto investe em tráfego por mês *
                   </Label>
                   <Select
@@ -267,7 +267,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     onFocus={() => trackFieldFocus('acknowledgment')}
                     className="mt-1"
                   />
-                  <Label htmlFor="acknowledgment" className="text-sm text-gray-300">
+                  <Label htmlFor="acknowledgment" className="text-sm text-gray-700">
                     <strong>Estou ciente de que este é um serviço pago e para negócios em escala</strong>
                   </Label>
                 </div>

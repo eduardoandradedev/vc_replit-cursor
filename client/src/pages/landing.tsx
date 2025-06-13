@@ -37,9 +37,9 @@ export default function Landing() {
       )}
       
       {/* Footer */}
-      <footer className="bg-brand-darker border-t border-brand-blue/20 text-white py-12">
+      <footer className="bg-brand-navy text-white py-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
+          <p className="text-blue-200">
             © 2024 - Rastreamento Profissional para E-commerces<br />
             Dados reais que alimentam o algoritmo de verdade.
           </p>

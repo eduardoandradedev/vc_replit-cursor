@@ -23,11 +23,11 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="py-20 bg-brand-dark">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
               Como funciona o processo
             </h2>
           </div>
@@ -39,18 +39,18 @@ export default function ProcessSection() {
                   {step.number}
                 </div>
                 <div className="text-4xl mb-4">{step.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
+                <h3 className="text-xl font-bold text-brand-navy mb-4">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
               </div>
             ))}
           </div>
           
-          <Card className="bg-yellow-900/30 border-2 border-yellow-500/50">
+          <Card className="bg-yellow-50 border-2 border-yellow-200">
             <CardContent className="p-8 text-center">
               <div className="text-4xl mb-4">⛔</div>
-              <p className="text-lg text-yellow-300 font-medium">
-                <strong className="text-white">Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
-                <span className="text-yellow-200">Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.</span>
+              <p className="text-lg text-yellow-800 font-medium">
+                <strong>Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
+                Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.
               </p>
             </CardContent>
           </Card>
