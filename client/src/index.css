@@ -3,30 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(15, 23%, 4%);
-  --muted: hsl(210, 40%, 98%);
-  --muted-foreground: hsl(215, 13%, 35%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(15, 23%, 4%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(15, 23%, 4%);
-  --border: hsl(214, 32%, 91%);
-  --input: hsl(214, 32%, 91%);
-  --primary: hsl(221, 83%, 53%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(210, 40%, 96%);
-  --secondary-foreground: hsl(222, 84%, 5%);
-  --accent: hsl(210, 40%, 96%);
-  --accent-foreground: hsl(222, 84%, 5%);
+  --background: hsl(217, 33%, 8%);
+  --foreground: hsl(220, 9%, 95%);
+  --muted: hsl(217, 33%, 12%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(217, 33%, 8%);
+  --popover-foreground: hsl(220, 9%, 95%);
+  --card: hsl(217, 33%, 10%);
+  --card-foreground: hsl(220, 9%, 95%);
+  --border: hsl(217, 33%, 15%);
+  --input: hsl(217, 33%, 15%);
+  --primary: hsl(29, 100%, 65%);
+  --primary-foreground: hsl(217, 33%, 8%);
+  --secondary: hsl(217, 33%, 15%);
+  --secondary-foreground: hsl(220, 9%, 95%);
+  --accent: hsl(217, 33%, 15%);
+  --accent-foreground: hsl(220, 9%, 95%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
-  --ring: hsl(221, 83%, 53%);
+  --ring: hsl(29, 100%, 65%);
   --radius: 0.75rem;
   
-  /* Custom brand colors */
-  --brand-navy: hsl(222, 84%, 5%);
-  --brand-blue: hsl(221, 83%, 53%);
+  /* Custom brand colors - inspired by Cobalt */
+  --brand-dark: hsl(217, 33%, 8%);
+  --brand-surface: hsl(217, 33%, 10%);
+  --brand-accent: hsl(29, 100%, 65%);
+  --brand-text: hsl(220, 9%, 95%);
+  --brand-muted: hsl(215, 20%, 65%);
   --brand-red: hsl(0, 84%, 60%);
   --brand-green: hsl(142, 76%, 36%);
 }
@@ -70,19 +73,42 @@
 
 @layer components {
   .brand-gradient {
-    background: linear-gradient(135deg, var(--brand-navy) 0%, hsl(230, 55%, 20%) 50%, var(--brand-blue) 100%);
+    background: linear-gradient(135deg, var(--brand-dark) 0%, hsl(217, 33%, 12%) 50%, hsl(217, 33%, 16%) 100%);
+  }
+  
+  .cobalt-gradient {
+    background: linear-gradient(135deg, hsl(217, 33%, 8%) 0%, hsl(217, 33%, 12%) 100%);
   }
   
   .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
   }
   
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
   
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .backdrop-blur-glass {
+    backdrop-filter: blur(12px);
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.1);
   }
 }

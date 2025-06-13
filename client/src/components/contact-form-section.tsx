@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle, Send } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { insertLeadSchema, type InsertLead } from "@shared/schema";
 import { trackEvent } from "@/lib/analytics";
@@ -96,20 +96,21 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   };
 
   return (
-    <section id="contact-form" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
-              📥 Solicite contato com nosso time
+    <section id="contact-form" className="py-24 bg-slate-800/50">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+              Solicite contato com nosso time
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-xl text-gray-300 leading-relaxed">
               Preencha os dados abaixo para avaliarmos se há fit para nossa solução.
             </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-8"></div>
           </div>
           
-          <Card className="bg-gray-50 border border-gray-200">
-            <CardContent className="p-8">
+          <Card className="backdrop-blur-glass border-slate-700/50">
+            <CardContent className="p-10 md:p-12">
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {/* Honeypot field for bot protection */}
                 <input
@@ -122,18 +123,18 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* Nome */}
                 <div>
-                  <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="name" className="text-sm font-semibold text-white mb-3 block">
                     Nome *
                   </Label>
                   <Input
                     id="name"
                     {...form.register("name")}
                     onFocus={() => trackFieldFocus('name')}
-                    className="mt-2"
+                    className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
                     placeholder="Seu nome completo"
                   />
                   {form.formState.errors.name && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.name.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.name.message}</p>
                   )}
                 </div>
                 

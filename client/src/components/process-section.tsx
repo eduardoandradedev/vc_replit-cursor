@@ -1,55 +1,68 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { FileText, Search, Rocket } from "lucide-react";
 
 export default function ProcessSection() {
   const steps = [
     {
       number: 1,
-      icon: "💼",
+      icon: FileText,
       title: "Você preenche o formulário",
       description: "Compartilhe informações básicas sobre seu e-commerce e situação atual."
     },
     {
       number: 2,
-      icon: "🔍",
+      icon: Search,
       title: "Nosso time avalia seu perfil",
       description: "(sem auditoria gratuita) - analisamos se há fit para nossa solução."
     },
     {
       number: 3,
-      icon: "🤝",
+      icon: Rocket,
       title: "Implementação completa",
       description: "Se for o momento certo, seguimos com a implementação profissional."
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
+    <section className="py-24 bg-slate-900/50">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
               Como funciona o processo
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-12 mb-20">
             {steps.map((step) => (
-              <div key={step.number} className="text-center">
-                <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
+              <div key={step.number} className="text-center relative">
+                {/* Connection Line */}
+                {step.number < 3 && (
+                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-orange-500/50 to-transparent transform translate-x-6"></div>
+                )}
+                
+                <div className="relative z-10 w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-8 shadow-2xl">
                   {step.number}
                 </div>
-                <div className="text-4xl mb-4">{step.icon}</div>
-                <h3 className="text-xl font-bold text-brand-navy mb-4">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                
+                <div className="w-20 h-20 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-orange-500/30">
+                  <step.icon className="w-10 h-10 text-orange-400" />
+                </div>
+                
+                <h3 className="text-2xl font-bold text-white mb-6">{step.title}</h3>
+                <p className="text-gray-300 text-lg leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
           
-          <Card className="bg-yellow-50 border-2 border-yellow-200">
-            <CardContent className="p-8 text-center">
-              <div className="text-4xl mb-4">⛔</div>
-              <p className="text-lg text-yellow-800 font-medium">
-                <strong>Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
+          <Card className="backdrop-blur-glass border-yellow-600/50 bg-gradient-to-br from-yellow-900/20 to-orange-900/20">
+            <CardContent className="p-12 text-center">
+              <div className="w-20 h-20 bg-yellow-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-yellow-500/30">
+                <div className="text-3xl">⚡</div>
+              </div>
+              <p className="text-xl text-yellow-100 font-medium leading-relaxed max-w-3xl mx-auto">
+                <strong className="text-white">Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
                 Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.
               </p>
             </CardContent>
