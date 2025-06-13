@@ -96,19 +96,19 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   };
 
   return (
-    <section id="contact-form" className="py-20 bg-white">
+    <section id="contact-form" className="py-20 bg-brand-darker">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               📥 Solicite contato com nosso time
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-400">
               Preencha os dados abaixo para avaliarmos se há fit para nossa solução.
             </p>
           </div>
           
-          <Card className="bg-gray-50 border border-gray-200">
+          <Card className="card-dark border border-brand-blue/20">
             <CardContent className="p-8">
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {/* Honeypot field for bot protection */}
