@@ -1,0 +1,51 @@
+use este PRD:
+
+1. Visão Geral do Produto
+Item	Descrição
+Propósito	Criar uma landing page premium para captar leads altamente qualificados (e-commerces que faturam R$ 50 K+/mês) interessados no serviço de Rastreamento Web + Server (ticket: R$ 3.700). A página deve filtrar quem já reconhece problemas de tracking e direcionar os dados do lead a um fluxo automatizado no n8n → WhatsApp, sem diagnóstico gratuito.
+Público-Alvo	Donos(as)/heads de e-commerce que:
+• faturam +R$ 50 K/mês
+• investem regularmente em Meta Ads / Google Ads
+• têm discrepâncias de métricas, desconfiam que seus dados estão incorretos e querem escalar com dados confiáveis
+Objetivos & KPIs	• ≥ 30 leads/mês (qualificados)
+• ≥ 25 % taxa “lead → call” (WhatsApp)
+• ≥ 10 % taxa “lead → cliente”
+• Tempo de carregamento ≤ 2 s (páginas core)
+
+2. Core Features
+
+Fluxo de Usuário
+Usuário chega via anúncio ou Instagram bio.
+
+Scaneia dor/benefício → clica em CTA “Solicitar contato”.
+
+Preenche formulário → submit.
+
+Front-end faz fetch POST para process.env.N8N_WEBHOOK_URL.
+
+Usuário cai em página de confirmação.
+
+n8n envia mensagem automática no WhatsApp → qualifica (perguntas extras).
+
+Se lead é fit, agenda call comercial.
+
+
+3. Tech Stack
+Camada	Escolha	                                                                                                            Observações
+Frontend	React + Vite em Replit (mais leve que Next.js, rota única) + Tailwind CSS + shacdcn para UI	Hot-reload simples; fácil de exportar para Vercel futuramente.
+Backend	Nenhum servidor dedicado (fase 1) – uso direto do webhook n8n.	Se precisar fallback: pequeno endpoint Express no mesmo Replit.
+Banco de Dados      Supabase (tabela leads) como backup, mas n8n já armazena.	
+Integrações	- n8n webhook (captura leads)
+- WhatsApp API (Evolution/360dialog) via n8n
+- GTM + GA4 para performance própria
+
+
+Requisitos Não Funcionais
+Área	Requisito
+Desempenho	FCP ≤ 2 s, TTI ≤ 3 s em 3G rápido.
+Segurança	• HTTPS obrigatório
+• Sanitização dos inputs
+• Honeypot + setTimeout anti-bot (em vez de captcha)
+Escalabilidade	Front-end estático → horizontaliza fácil via CDN; n8n pode ser escalado em container.
+Manutenibilidade	Código comentado, padrão ESLint + Prettier, componentes reutilizáveis.
+Acessibilidade	Labels formais, contraste mínimo 4.5:1, aria-live em mensagens de erro.

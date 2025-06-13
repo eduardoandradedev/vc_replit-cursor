@@ -1,0 +1,92 @@
+### 1️⃣ HERO SECTION
+
+**Headline (impactante e qualificada):**
+
+> **Seus anúncios vendem. Mas seu rastreamento sabota o algoritmo.**
+
+**Subheadline:**
+
+> Para e-commerces que já faturam, investem em mídia e querem escalar com segurança.
+> Nossa agência implementa rastreamento profissional Web + Server, com dados que alimentam a performance de verdade.
+
+**CTA (sem promessa gratuita):**
+🔍 **Solicite contato com nosso time especialista**
+
+---
+
+### 2️⃣ SEÇÃO – Para quem é (filtro direto)
+
+🎯 **Essa solução é para você se:**
+
+* Seu e-commerce fatura acima de **R$ 50 mil/mês**
+* Você investe constantemente em tráfego pago
+* Suas métricas não batem entre plataformas
+* Suas campanhas caíram de performance sem motivo aparente
+* Já contratou “instalações básicas” e continua cego
+
+🛑 **Importante:**
+Se você ainda precisa confirmar se o rastreamento está quebrado, esta solução **não é para você.**
+Nós atuamos com **negócios maduros que sabem o valor de dados reais.**
+
+---
+
+### 3️⃣ SEÇÃO – O que fazemos
+
+**Rastreamento Profissional para e-commerces que querem escalar com precisão.**
+
+**Inclui:**
+
+✅ Implementação Web + Server com GTM e infraestrutura Stape
+✅ Deduplicação com `event_id` (client + server)
+✅ Meta Conversions API + Enhanced Conversions Google Ads
+✅ Enriquecimento de eventos com dados reais (`content_id`, `value`, UTM, etc.)
+✅ Cookies persistentes para iOS, Safari, AdBlock
+✅ Auditoria de coleta + documentação personalizada
+✅ Suporte e validação com plataformas (Meta, Google, GA4)
+
+---
+
+### 4️⃣ SEÇÃO – O impacto dos dados ruins
+
+> 🔴 Seu pixel dispara tarde demais (ou nem dispara)
+> 🔴 Os eventos chegam incompletos no Meta e Google
+> 🔴 Seu ROAS é mascarado por dados falsos
+> 🔴 Você investe em tráfego, mas entrega dados errados para o algoritmo
+
+📉 Resultado?
+**Campanhas que não escalam, públicos que não funcionam, e dinheiro indo pro ralo.**
+
+---
+
+### 5️⃣ SEÇÃO – Como funciona o processo
+
+> 💼 **1. Você preenche o formulário ao lado**
+> 🔍 **2. Nosso time avalia seu perfil (sem auditoria gratuita)**
+> 🤝 **3. Se for o momento certo, seguimos com a implementação completa**
+
+**⛔ Nós não somos uma agência comum. Não aceitamos qualquer projeto. Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.**
+
+---
+
+### 6️⃣ FORMULÁRIO DE LEAD QUALIFICADO
+
+📥 **Formulário (Webhook para n8n + WhatsApp):**
+
+* Nome
+* WhatsApp
+* Link da loja
+* Faturamento mensal da loja (select)
+
+  * R\$ 50 mil a R\$ 100 mil
+  * R\$ 100 mil a R\$ 300 mil
+  * Acima de R\$ 300 mil
+* Plataforma (Shopify, WooCommerce, Nuvemshop, outra)
+* Quanto investe em tráfego por mês (select)
+
+  * Até R\$ 10 mil
+  * De R\$ 10 mil a R\$ 30 mil
+  * Acima de R\$ 30 mil
+* Checkbox obrigatório: \[x] Estou ciente de que este é um serviço pago e para negócios em escala
+
+**Botão:**
+🔒 **Solicitar contato com especialista**
