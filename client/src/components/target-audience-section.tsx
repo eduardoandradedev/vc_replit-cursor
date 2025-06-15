@@ -3,20 +3,20 @@ import { CheckCircle, AlertTriangle } from "lucide-react";
 
 export default function TargetAudienceSection() {
   return (
-    <section className="py-24 bg-slate-900/50">
-      <div className="container mx-auto px-6">
+    <section className="py-16 md:py-24 bg-slate-900/50">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 md:mb-8 px-4">
               Essa solução é para você se:
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
             {/* Ideal Client Criteria */}
             <Card className="backdrop-blur-glass border-slate-700/50">
-              <CardContent className="p-10">
+              <CardContent className="p-6 md:p-8 lg:p-10">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-3 h-3 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
                   <h3 className="text-xl font-bold text-white">
