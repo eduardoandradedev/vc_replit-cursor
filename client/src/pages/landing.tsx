@@ -6,6 +6,7 @@ import ProcessSection from "@/components/process-section";
 import ContactFormSection from "@/components/contact-form-section";
 import ConfirmationSection from "@/components/confirmation-section";
 import { useState } from "react";
+import ReasonsSection from "@/components/ReasonsSection";
 
 export default function Landing() {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -23,6 +24,7 @@ export default function Landing() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <ReasonsSection />  
       <TargetAudienceSection />
       <ServiceDescriptionSection />
       <ProblemSection />

@@ -96,21 +96,21 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   };
 
   return (
-    <section id="contact-form" className="py-24 bg-slate-800/50">
-      <div className="container mx-auto px-6">
+    <section id="contact-form" className="py-16 md:py-24 bg-slate-800/50">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 md:mb-8">
               Solicite contato com nosso time
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed px-4">
               Preencha os dados abaixo para avaliarmos se há fit para nossa solução.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-8"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-6 md:mt-8"></div>
           </div>
           
           <Card className="backdrop-blur-glass border-slate-700/50">
-            <CardContent className="p-10 md:p-12">
+            <CardContent className="p-6 md:p-10 lg:p-12">
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {/* Honeypot field for bot protection */}
                 <input

@@ -64,25 +64,51 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
+        'rise-slow': {
+          '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+          '90%': { opacity: '0.8' },
+          '100%': { transform: 'translateY(-100vh) scale(1.2)', opacity: '0' },
+        },
+        'rise-medium': {
+          '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+          '90%': { opacity: '0.7' },
+          '100%': { transform: 'translateY(-100vh) scale(1.1)', opacity: '0' },
+        },
+        'rise-fast': {
+          '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+          '90%': { opacity: '0.6' },
+          '100%': { transform: 'translateY(-100vh) scale(1)', opacity: '0' },
+        },
+        'rise-float': {
+          '0%': { transform: 'translateY(0) translateX(0) scale(1)', opacity: '1' },
+          '50%': { transform: 'translateY(-50vh) translateX(15px) scale(1.1)', opacity: '0.6' },
+          '100%': { transform: 'translateY(-100vh) translateX(-15px) scale(1.2)', opacity: '0' },
+        },
+        // ✨ Animação de fagulha adicionada aqui
+        'sparkle': {
+          '0%':   { transform: 'translateY(0) translateX(0) scale(1)', opacity: '1' },
+          '25%':  { transform: 'translateY(-25vh) translateX(20px) scale(1.1)', opacity: '0.8' },
+          '50%':  { transform: 'translateY(-50vh) translateX(-15px) scale(1)', opacity: '1' },
+          '75%':  { transform: 'translateY(-75vh) translateX(10px) scale(1.1)', opacity: '0.5' },
+          '100%': { transform: 'translateY(-100vh) translateX(-5px) scale(1.2)', opacity: '0' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'rise-slow': 'rise-slow 40s linear infinite',
+        'rise-medium': 'rise-medium 30s linear infinite',
+        'rise-fast': 'rise-fast 22s linear infinite',
+        'rise-float': 'rise-float 35s linear infinite',
+        // ✨ Classe da animação de fagulha adicionada aqui
+        'sparkle': 'sparkle 25s linear infinite',
       },
     },
   },

@@ -1,11 +1,58 @@
+import React, { useMemo } from 'react';
+
 interface ParticleBackgroundProps {
   className?: string;
+  particleCount?: number; // Prop opcional para controlar o número de partículas
 }
 
-export const ParticleBackground = ({ className = '' }: ParticleBackgroundProps) => {
+export const ParticleBackground = ({ 
+  className = '',
+  particleCount = 50 // Definimos um número padrão de 50 partículas
+}: ParticleBackgroundProps) => {
+
+  // useMemo garante que as partículas só sejam calculadas uma vez
+  const particles = useMemo(() => {
+    const particleArray = [];
+    
+    // ✨ AQUI ESTÁ A MUDANÇA: Adicionamos a nova animação à lista
+    const animationTypes = [
+      'animate-rise-slow', 
+      'animate-rise-medium', 
+      'animate-rise-fast', 
+      'animate-rise-float',
+      'animate-sparkle' // <--- ADICIONADO!
+    ];
+    
+    for (let i = 0; i < particleCount; i++) {
+      // Gera um tamanho entre 1px e 3px
+      const size = Math.floor(Math.random() * 3) + 1; 
+      // Opacidade entre 30% e 60%
+      const opacity = (Math.random() * 0.3 + 0.3).toFixed(2); 
+      // Posição horizontal aleatória
+      const left = `${Math.random() * 100}%`; 
+      // Posição vertical aleatória na base da tela
+      const bottom = `${Math.random() * 100}%`; 
+       // Seleciona um tipo de animação aleatório
+      const animationType = animationTypes[Math.floor(Math.random() * animationTypes.length)];
+      // Atraso de animação aleatório para que não comecem todas juntas
+      const animationDelay = `${(Math.random() * 5).toFixed(2)}s`; 
+      
+      particleArray.push({
+        id: i,
+        size,
+        opacity,
+        left,
+        bottom,
+        animationType,
+        animationDelay
+      });
+    }
+    return particleArray;
+  }, [particleCount]);
+
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Top light effect */}
+      {/* Efeito de luz no topo */}
       <div 
         className="absolute top-0 left-0 right-0 h-[400px] blur-2xl"
         style={{
@@ -13,7 +60,7 @@ export const ParticleBackground = ({ className = '' }: ParticleBackgroundProps) 
         }}
       ></div>
       
-      {/* Grid pattern */}
+      {/* Padrão de grade */}
       <div 
         className="absolute inset-0 opacity-40"
         style={{
@@ -22,41 +69,22 @@ export const ParticleBackground = ({ className = '' }: ParticleBackgroundProps) 
         }}
       ></div>
       
-      {/* Rising particles using CSS */}
+      {/* Contêiner das partículas geradas dinamicamente */}
       <div className="absolute inset-0">
-        {/* Batch 1 - Bottom row */}
-        <div className="particle absolute bottom-0 left-[5%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-slow"></div>
-        <div className="particle absolute bottom-0 left-[12%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-medium" style={{ animationDelay: '1s' }}></div>
-        <div className="particle absolute bottom-0 left-[20%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-fast" style={{ animationDelay: '0.5s' }}></div>
-        <div className="particle absolute bottom-0 left-[28%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-slow" style={{ animationDelay: '2s' }}></div>
-        <div className="particle absolute bottom-0 left-[35%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-medium" style={{ animationDelay: '0.8s' }}></div>
-        <div className="particle absolute bottom-0 left-[42%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-fast" style={{ animationDelay: '1.5s' }}></div>
-        <div className="particle absolute bottom-0 left-[50%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-slow" style={{ animationDelay: '2.5s' }}></div>
-        <div className="particle absolute bottom-0 left-[58%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-medium" style={{ animationDelay: '1.2s' }}></div>
-        <div className="particle absolute bottom-0 left-[65%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-fast" style={{ animationDelay: '3s' }}></div>
-        <div className="particle absolute bottom-0 left-[72%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-slow" style={{ animationDelay: '0.3s' }}></div>
-        <div className="particle absolute bottom-0 left-[80%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-medium" style={{ animationDelay: '1.8s' }}></div>
-        <div className="particle absolute bottom-0 left-[88%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-fast" style={{ animationDelay: '2.2s' }}></div>
-        <div className="particle absolute bottom-0 left-[95%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-slow" style={{ animationDelay: '1.7s' }}></div>
-        
-        {/* Batch 2 - Mid level */}
-        <div className="particle absolute bottom-[25%] left-[8%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-medium" style={{ animationDelay: '3.5s' }}></div>
-        <div className="particle absolute bottom-[30%] left-[25%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-fast" style={{ animationDelay: '0.7s' }}></div>
-        <div className="particle absolute bottom-[35%] left-[45%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-slow" style={{ animationDelay: '2.8s' }}></div>
-        <div className="particle absolute bottom-[40%] left-[68%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-medium" style={{ animationDelay: '1.3s' }}></div>
-        <div className="particle absolute bottom-[45%] left-[85%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-fast" style={{ animationDelay: '3.2s' }}></div>
-        
-        {/* Batch 3 - Upper level */}
-        <div className="particle absolute bottom-[60%] left-[15%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-slow" style={{ animationDelay: '4s' }}></div>
-        <div className="particle absolute bottom-[65%] left-[38%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-medium" style={{ animationDelay: '0.9s' }}></div>
-        <div className="particle absolute bottom-[70%] left-[62%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-fast" style={{ animationDelay: '2.7s' }}></div>
-        <div className="particle absolute bottom-[75%] left-[78%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-slow" style={{ animationDelay: '1.4s' }}></div>
-        
-        {/* Batch 4 - Scattered extras */}
-        <div className="particle absolute bottom-[15%] left-[32%] w-[2px] h-[2px] bg-white/45 rounded-full animate-rise-medium" style={{ animationDelay: '4.5s' }}></div>
-        <div className="particle absolute bottom-[55%] left-[92%] w-[2px] h-[2px] bg-white/35 rounded-full animate-rise-fast" style={{ animationDelay: '0.4s' }}></div>
-        <div className="particle absolute bottom-[80%] left-[22%] w-[2px] h-[2px] bg-white/50 rounded-full animate-rise-slow" style={{ animationDelay: '3.8s' }}></div>
-        <div className="particle absolute bottom-[85%] left-[52%] w-[2px] h-[2px] bg-white/40 rounded-full animate-rise-medium" style={{ animationDelay: '2.1s' }}></div>
+        {particles.map(p => (
+          <div
+            key={p.id}
+            className={`particle absolute bg-white rounded-full ${p.animationType}`}
+            style={{
+              left: p.left,
+              bottom: p.bottom,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              opacity: p.opacity,
+              animationDelay: p.animationDelay,
+            }}
+          ></div>
+        ))}
       </div>
     </div>
   );

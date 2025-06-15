@@ -11,32 +11,33 @@ export default function HeroSection() {
 
   return (
     <section
-      /* ↓ gradiente azul-cobalto.  Altere se tiver sua própria classe utilitária */
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-[#0d1020] via-[#0a0d1a] to-[#06070e]"
     >
-      {/* Fundo de partículas  ─ z-0 garante ficar atrás do texto/menu */}
+      {/* Fundo de partículas */}
       <ParticleBackground className="z-0" />
 
       {/* Navegação */}
-      <nav className="absolute top-0 left-0 right-0 p-6 z-20">
+      <nav className="absolute top-0 left-0 right-0 p-4 md:p-6 z-20">
         <div className="container mx-auto flex items-center justify-between">
-          <span className="text-white font-bold text-xl">Tracking Pro</span>
+          <span className="text-white/70 font-bold text-lg md:text-xl">Tracking Pro</span>
 
           <Button
             onClick={scrollToForm}
             variant="outline"
-            className="border-white/20 text-white hover:bg-white/10"
+            size="sm"
+            className="border-white/20 text-white/70 hover:bg-white/10 text-sm md:text-base px-3 md:px-4 py-2"
           >
-            Solicitar contato
+            <span className="hidden sm:inline">Solicitar contato</span>
+            <span className="sm:hidden">Contato</span>
           </Button>
         </div>
       </nav>
 
       {/* Conteúdo principal */}
-      <div className="relative z-10 container mx-auto px-6 py-24">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl text-center">
           {/* Título */}
-          <h1 className="mb-8 text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-md">
+          <h1 className="mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white/70 drop-shadow-md">
             Seus anúncios vendem.
             <br />
             <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
@@ -45,24 +46,33 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtítulo */}
-          <p className="mx-auto mb-12 max-w-4xl text-lg md:text-xl leading-relaxed text-gray-300">
+          <p className="mx-auto mb-8 md:mb-12 max-w-4xl text-base md:text-lg lg:text-xl leading-relaxed text-gray-300/70 px-4">
             Para e-commerces que já faturam, investem em mídia e querem escalar
             com segurança. Nossa agência implementa rastreamento profissional
             Web + Server, entregando dados que alimentam a performance de
             verdade.
           </p>
 
-          {/* CTA */}
+          {/* ✨ BOTÃO CTA COM ESTILO DA IMAGEM ✨ */}
           <Button
             onClick={scrollToForm}
             size="lg"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg font-semibold px-8 py-4 rounded-xl transition-transform duration-300 hover:scale-105 shadow-2xl"
+            className="
+              bg-gradient-to-r from-orange-500 to-orange-600 
+              text-white text-lg font-semibold 
+              px-8 py-4 rounded-xl
+              shadow-xl shadow-orange-500/30
+              transition-all duration-300 ease-out
+              hover:scale-105
+              hover:-translate-y-1
+              hover:shadow-2xl hover:shadow-orange-500/40
+            "
           >
             Entrar em contato
           </Button>
 
           {/* Indicadores de confiança */}
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-400">
+          <div className="mt-12 md:mt-16 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70">
             {[
               "Implementação Profissional",
               "Negócios R$ 50K+/mês",
@@ -70,7 +80,7 @@ export default function HeroSection() {
             ].map((item) => (
               <span key={item} className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600" />
-                {item}
+                <span className="whitespace-nowrap">{item}</span>
               </span>
             ))}
           </div>
