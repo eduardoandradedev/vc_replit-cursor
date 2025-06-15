@@ -58,7 +58,7 @@ const reasonsData = [
 
 export default function ReasonsSection() {
   return (
-    <section className="bg-[#06070e] py-20 sm:py-24">
+    <section className="bg-[#06070e] pt-6 md:pt-8 pb-20 sm:pb-24">
       <div className="container mx-auto px-6">
         {/* Título da Seção */}
         <div className="max-w-3xl mx-auto text-center mb-16">

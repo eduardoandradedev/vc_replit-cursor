@@ -34,7 +34,7 @@ export default function HeroSection() {
       </nav>
 
       {/* Conteúdo principal */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-6 md:pb-8">
         <div className="mx-auto max-w-5xl text-center">
           {/* Título */}
           <h1 className="mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white/70 drop-shadow-md">
