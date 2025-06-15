@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ParticleBackground } from "@/components/ParticleBackground";
 
 export default function HeroSection() {
   const scrollToForm = () => {

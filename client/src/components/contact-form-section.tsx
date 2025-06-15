@@ -140,7 +140,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 
                 {/* WhatsApp */}
                 <div>
-                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="whatsapp" className="text-sm font-semibold text-white mb-3 block">
                     WhatsApp *
                   </Label>
                   <Input
@@ -151,17 +151,17 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                       const formatted = formatPhoneNumber(e.target.value);
                       form.setValue("whatsapp", formatted);
                     }}
-                    className="mt-2"
+                    className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
                     placeholder="(11) 99999-9999"
                   />
                   {form.formState.errors.whatsapp && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.whatsapp.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.whatsapp.message}</p>
                   )}
                 </div>
                 
                 {/* Link da loja */}
                 <div>
-                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="storeUrl" className="text-sm font-semibold text-white mb-3 block">
                     Link da loja *
                   </Label>
                   <Input
@@ -169,17 +169,17 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     type="url"
                     {...form.register("storeUrl")}
                     onFocus={() => trackFieldFocus('storeUrl')}
-                    className="mt-2"
+                    className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
                     placeholder="https://sualojaexemplo.com.br"
                   />
                   {form.formState.errors.storeUrl && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.storeUrl.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.storeUrl.message}</p>
                   )}
                 </div>
                 
                 {/* Faturamento mensal */}
                 <div>
-                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="monthlyRevenue" className="text-sm font-semibold text-white mb-3 block">
                     Faturamento mensal da loja *
                   </Label>
                   <Select
@@ -189,23 +189,23 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     }}
                     onOpenChange={() => trackFieldFocus('monthlyRevenue')}
                   >
-                    <SelectTrigger className="mt-2">
+                    <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white focus:border-orange-500 focus:ring-orange-500/20">
                       <SelectValue placeholder="Selecione uma opção" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-slate-800 border-slate-600">
                       <SelectItem value="50k-100k">R$ 50 mil a R$ 100 mil</SelectItem>
                       <SelectItem value="100k-300k">R$ 100 mil a R$ 300 mil</SelectItem>
                       <SelectItem value="300k+">Acima de R$ 300 mil</SelectItem>
                     </SelectContent>
                   </Select>
                   {form.formState.errors.monthlyRevenue && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.monthlyRevenue.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.monthlyRevenue.message}</p>
                   )}
                 </div>
                 
                 {/* Plataforma */}
                 <div>
-                  <Label htmlFor="platform" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="platform" className="text-sm font-semibold text-white mb-3 block">
                     Plataforma *
                   </Label>
                   <Select
@@ -215,10 +215,10 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     }}
                     onOpenChange={() => trackFieldFocus('platform')}
                   >
-                    <SelectTrigger className="mt-2">
+                    <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white focus:border-orange-500 focus:ring-orange-500/20">
                       <SelectValue placeholder="Selecione uma opção" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-slate-800 border-slate-600">
                       <SelectItem value="shopify">Shopify</SelectItem>
                       <SelectItem value="woocommerce">WooCommerce</SelectItem>
                       <SelectItem value="nuvemshop">Nuvemshop</SelectItem>
@@ -226,13 +226,13 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     </SelectContent>
                   </Select>
                   {form.formState.errors.platform && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.platform.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.platform.message}</p>
                   )}
                 </div>
                 
                 {/* Investimento em tráfego */}
                 <div>
-                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="trafficInvestment" className="text-sm font-semibold text-white mb-3 block">
                     Quanto investe em tráfego por mês *
                   </Label>
                   <Select
@@ -242,22 +242,22 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     }}
                     onOpenChange={() => trackFieldFocus('trafficInvestment')}
                   >
-                    <SelectTrigger className="mt-2">
+                    <SelectTrigger className="bg-slate-900/50 border-slate-600 text-white focus:border-orange-500 focus:ring-orange-500/20">
                       <SelectValue placeholder="Selecione uma opção" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-slate-800 border-slate-600">
                       <SelectItem value="up-to-10k">Até R$ 10 mil</SelectItem>
                       <SelectItem value="10k-30k">De R$ 10 mil a R$ 30 mil</SelectItem>
                       <SelectItem value="30k+">Acima de R$ 30 mil</SelectItem>
                     </SelectContent>
                   </Select>
                   {form.formState.errors.trafficInvestment && (
-                    <p className="text-red-600 text-sm mt-1">{form.formState.errors.trafficInvestment.message}</p>
+                    <p className="text-red-400 text-sm mt-2">{form.formState.errors.trafficInvestment.message}</p>
                   )}
                 </div>
                 
                 {/* Checkbox obrigatório */}
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-4">
                   <Checkbox
                     id="acknowledgment"
                     checked={form.watch("acknowledgment")}
@@ -266,19 +266,19 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                       trackFieldChange('acknowledgment', checked ? 'true' : 'false');
                     }}
                     onFocus={() => trackFieldFocus('acknowledgment')}
-                    className="mt-1"
+                    className="mt-1 border-slate-600 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
                   />
-                  <Label htmlFor="acknowledgment" className="text-sm text-gray-700">
-                    <strong>Estou ciente de que este é um serviço pago e para negócios em escala</strong>
+                  <Label htmlFor="acknowledgment" className="text-sm text-gray-300 leading-relaxed">
+                    <strong className="text-white">Estou ciente de que este é um serviço pago e para negócios em escala</strong>
                   </Label>
                 </div>
                 {form.formState.errors.acknowledgment && (
-                  <p className="text-red-600 text-sm mt-1">{form.formState.errors.acknowledgment.message}</p>
+                  <p className="text-red-400 text-sm mt-2">{form.formState.errors.acknowledgment.message}</p>
                 )}
                 
                 {/* Error message */}
                 {error && (
-                  <Alert variant="destructive">
+                  <Alert variant="destructive" className="bg-red-900/20 border-red-600/50 text-red-200">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
@@ -288,15 +288,18 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-2xl border-0 text-lg"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className="mr-3 h-5 w-5 animate-spin" />
                       Enviando...
                     </>
                   ) : (
-                    <>🔒 Solicitar contato com especialista</>
+                    <>
+                      <Send className="mr-3 h-5 w-5" />
+                      Solicitar contato com especialista
+                    </>
                   )}
                 </Button>
               </form>

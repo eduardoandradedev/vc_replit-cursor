@@ -37,12 +37,31 @@ export default function Landing() {
       )}
       
       {/* Footer */}
-      <footer className="bg-brand-navy text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-blue-200">
-            © 2024 - Rastreamento Profissional para E-commerces<br />
-            Dados reais que alimentam o algoritmo de verdade.
-          </p>
+      <footer className="bg-slate-900 border-t border-slate-800 text-white py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Tracking Pro</h3>
+              <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
+            </div>
+            
+            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              Rastreamento Profissional para E-commerces que faturam R$ 50K+/mês<br />
+              <span className="text-orange-400">Dados reais que alimentam o algoritmo de verdade.</span>
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-8 text-gray-500 text-sm mb-8">
+              <span>© 2024 Tracking Pro</span>
+              <span>•</span>
+              <span>Implementação Profissional</span>
+              <span>•</span>
+              <span>Poucos Clientes/Mês</span>
+            </div>
+            
+            <div className="text-xs text-gray-600">
+              Este é um serviço especializado para negócios maduros que reconhecem o valor de dados precisos.
+            </div>
+          </div>
         </div>
       </footer>
     </div>

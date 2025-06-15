@@ -35,3 +35,4 @@ export default defineConfig({
     },
   },
 });
+// Teste feito no Cursor via SSH
