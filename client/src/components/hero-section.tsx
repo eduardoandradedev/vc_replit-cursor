@@ -10,6 +10,9 @@ export default function HeroSection() {
 
   return (
     <section className="relative cobalt-gradient min-h-screen flex items-center overflow-hidden">
+      {/* Particle Background */}
+      <ParticleBackground />
+      
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-10 p-6">
         <div className="container mx-auto flex justify-between items-center">
@@ -23,12 +26,6 @@ export default function HeroSection() {
           </Button>
         </div>
       </nav>
-
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse-soft"></div>
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float"></div>
-      </div>
       
       <div className="relative container mx-auto px-6 py-24 z-10">
         <div className="max-w-5xl mx-auto text-center">
