@@ -5,15 +5,20 @@ interface ParticleBackgroundProps {
 export const ParticleBackground = ({ className = '' }: ParticleBackgroundProps) => {
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Top light effect - like Cobalt */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-white/8 via-white/2 to-transparent blur-3xl"></div>
-      
-      {/* Grid pattern - consistent with Cobalt */}
+      {/* Top light effect - direct CSS */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute top-0 left-0 right-0 h-[400px] blur-2xl"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.3) 0.5px, transparent 0.5px)`,
-          backgroundSize: '40px 40px',
+          background: 'radial-gradient(ellipse 800px 400px at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%)'
+        }}
+      ></div>
+      
+      {/* Grid pattern - direct CSS */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0.5px, transparent 0.5px)',
+          backgroundSize: '30px 30px'
         }}
       ></div>
       
