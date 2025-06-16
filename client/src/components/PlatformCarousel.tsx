@@ -37,7 +37,7 @@ const platforms: Platform[] = [
   {
     name: 'NuvemShop',
     logo: nuvemshopLogo,
-    height: 48
+    height: 58
   },
   {
     name: 'VTEX',
@@ -63,11 +63,14 @@ const getLogoHeight = (height?: number) => {
 
 export default function PlatformCarousel() {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden mt-16">
       <div className="text-center mb-8">
-        <p className="text-sm font-medium text-white/60 mb-6">
-          Integração com as principais plataformas
-        </p>
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
+          <p className="text-sm font-medium text-white/60">
+            Integração com as principais plataformas
+          </p>
+        </div>
       </div>
       
       <div className="relative overflow-hidden py-4">
