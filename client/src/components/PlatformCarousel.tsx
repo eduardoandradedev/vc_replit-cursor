@@ -56,6 +56,17 @@ const platforms: Platform[] = [
   }
 ];
 
+// Função para obter o tamanho da logo
+const getLogoSize = (size?: string) => {
+  switch (size) {
+    case 'sm': return 'h-6';
+    case 'md': return 'h-8';
+    case 'lg': return 'h-10';
+    case 'xl': return 'h-12';
+    default: return 'h-8';
+  }
+};
+
 export default function PlatformCarousel() {
   return (
     <div className="w-full overflow-hidden">
@@ -77,7 +88,7 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className="h-8 w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                className={`${getLogoSize(platform.size)} w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300`}
               />
             </div>
           ))}
@@ -91,7 +102,7 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className="h-8 w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                className={`${getLogoSize(platform.size)} w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300`}
               />
             </div>
           ))}
