@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, AlertCircle, Send } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
@@ -31,7 +31,6 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       monthlyRevenue: undefined,
       platform: undefined,
       trafficInvestment: undefined,
-      acknowledgment: false,
     },
   });
 
@@ -255,26 +254,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     <p className="text-red-400 text-sm mt-2">{form.formState.errors.trafficInvestment.message}</p>
                   )}
                 </div>
-                
-                {/* Checkbox obrigatório */}
-                <div className="flex items-start gap-4">
-                  <Checkbox
-                    id="acknowledgment"
-                    checked={form.watch("acknowledgment")}
-                    onCheckedChange={(checked) => {
-                      form.setValue("acknowledgment", checked as boolean);
-                      trackFieldChange('acknowledgment', checked ? 'true' : 'false');
-                    }}
-                    onFocus={() => trackFieldFocus('acknowledgment')}
-                    className="mt-1 border-slate-600 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
-                  />
-                  <Label htmlFor="acknowledgment" className="text-sm text-gray-300 leading-relaxed">
-                    <strong className="text-white">Estou ciente de que este é um serviço pago e para negócios em escala</strong>
-                  </Label>
-                </div>
-                {form.formState.errors.acknowledgment && (
-                  <p className="text-red-400 text-sm mt-2">{form.formState.errors.acknowledgment.message}</p>
-                )}
+
                 
                 {/* Error message */}
                 {error && (

@@ -16,7 +16,6 @@ export const leads = pgTable("leads", {
   monthlyRevenue: text("monthly_revenue").notNull(),
   platform: text("platform").notNull(),
   trafficInvestment: text("traffic_investment").notNull(),
-  acknowledgment: boolean("acknowledgment").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -40,9 +39,6 @@ export const insertLeadSchema = createInsertSchema(leads).omit({
   }),
   trafficInvestment: z.enum(["up-to-10k", "10k-30k", "30k+"], {
     required_error: "Selecione o investimento em tráfego",
-  }),
-  acknowledgment: z.boolean().refine((val) => val === true, {
-    message: "Você deve aceitar que este é um serviço pago",
   }),
 });
 
