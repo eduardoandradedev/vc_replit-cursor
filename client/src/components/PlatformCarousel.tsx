@@ -12,65 +12,63 @@ import tagmanagerLogo from '@assets/tagmanagerLogo.png';
 interface Platform {
   name: string;
   logo: string;
-  height?: number; // altura em pixels
+  height?: number; // altura em em (unidades responsivas)
 }
 
 const platforms: Platform[] = [
   {
     name: 'Meta Ads',
     logo: metaLogo,
-    height: 40
+    height: 2.5
   },
   {
     name: 'Google Ads',
     logo: googleAdsLogo,
-    height: 44
+    height: 2.75
   },
   {
     name: 'GTM',
     logo: tagmanagerLogo,
-    height: 48
+    height: 3
   },
   {
     name: 'Shopify',
     logo: shopifyLogo,
-    height: 40
+    height: 2.5
   },
   {
     name: 'WooCommerce',
     logo: woocommerceLogo,
-    height: 50
+    height: 3.1
   },
   {
     name: 'NuvemShop',
     logo: nuvemshopLogo,
-    height: 58
+    height: 3.6
   },
   {
     name: 'VTEX',
     logo: vtexLogo,
-    height: 32
+    height: 2
   },
   {
     name: 'Loja Integrada',
     logo: lojaintegradaLogo,
-    height: 56
+    height: 3.5
   },
   {
     name: 'Magento',
     logo: magentoLogo,
-    height: 56
+    height: 3.5
   }
 ];
 
-// Função para obter classes responsivas baseadas na altura
-const getResponsiveClasses = (height?: number) => {
-  const baseHeight = height || 32;
-  
-  if (baseHeight <= 24) return "h-4 sm:h-5 lg:h-6"; // pequeno
-  if (baseHeight <= 32) return "h-5 sm:h-6 lg:h-8"; // médio
-  if (baseHeight <= 40) return "h-6 sm:h-8 lg:h-10"; // grande
-  return "h-8 sm:h-10 lg:h-12"; // extra grande
+// Função para obter estilo responsivo baseado na altura em em
+const getHeightStyle = (height?: number) => {
+  const baseHeight = height || 2;
+  return {
+    height: `${baseHeight}em`
+  };
 };
 
 export default function PlatformCarousel() {
@@ -97,7 +95,8 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className={`w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300 ${getResponsiveClasses(platform.height)}`}
+                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                style={getHeightStyle(platform.height)}
               />
             </div>
           ))}
@@ -111,7 +110,8 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className={`w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300 ${getResponsiveClasses(platform.height)}`}
+                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                style={getHeightStyle(platform.height)}
               />
             </div>
           ))}
