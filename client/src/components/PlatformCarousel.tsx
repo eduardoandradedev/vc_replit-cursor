@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import shopifyLogo from '@assets/Shopify.com_Logo_2_1750070139007.webp';
 
 interface Platform {
   name: string;
@@ -20,7 +21,7 @@ const platforms: Platform[] = [
   },
   {
     name: 'Shopify',
-    logo: '/attached_assets/Shopify.com_Logo_2_1750070139007.webp'
+    logo: shopifyLogo
   },
   {
     name: 'WooCommerce',
