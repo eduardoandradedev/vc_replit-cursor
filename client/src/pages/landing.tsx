@@ -7,7 +7,7 @@ import ContactFormSection from "@/components/contact-form-section";
 import ConfirmationSection from "@/components/confirmation-section";
 import { useState } from "react";
 import ReasonsSection from "@/components/ReasonsSection";
-import { PlataformasAtendidasCarousel } from "@/components/PlataformasAtendidasCarousel";
+import logoPath from "@assets/logo_1750068927420.png";
 
 export default function Landing() {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -45,7 +45,7 @@ export default function Landing() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
               <img 
-                src="/attached_assets/logo_1750068927420.png" 
+                src={logoPath} 
                 alt="Tracking Pro" 
                 className="h-12 md:h-16 w-auto mx-auto mb-4"
               />

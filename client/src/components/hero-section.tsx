@@ -1,6 +1,7 @@
 // components/HeroSection.tsx
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import logoPath from "@assets/logo_1750068927420.png";
 
 export default function HeroSection() {
   const scrollToForm = () => {
@@ -20,7 +21,7 @@ export default function HeroSection() {
       <nav className="absolute top-0 left-0 right-0 p-4 md:p-6 z-20">
         <div className="container mx-auto flex items-center justify-between">
           <img 
-            src="/attached_assets/logo_1750068927420.png" 
+            src={logoPath} 
             alt="Tracking Pro" 
             className="h-8 md:h-10 w-auto"
           />
