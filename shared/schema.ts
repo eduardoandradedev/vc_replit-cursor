@@ -40,6 +40,9 @@ export const insertLeadSchema = createInsertSchema(leads).omit({
   trafficInvestment: z.enum(["up-to-10k", "10k-30k", "30k+"], {
     required_error: "Selecione o investimento em tráfego",
   }),
+  agreement: z.boolean().refine(val => val === true, {
+    message: "É necessário concordar para prosseguir",
+  }),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

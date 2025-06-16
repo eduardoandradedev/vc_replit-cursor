@@ -33,6 +33,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       monthlyRevenue: undefined,
       platform: undefined,
       trafficInvestment: undefined,
+      agreement: false,
     },
   });
 
