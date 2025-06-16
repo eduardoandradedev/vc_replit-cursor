@@ -268,7 +268,8 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-2xl border-0 text-lg"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-xl shadow-orange-500/30 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/40"
                 >
                   {isSubmitting ? (
                     <>
