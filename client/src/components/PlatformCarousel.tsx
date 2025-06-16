@@ -20,7 +20,7 @@ const platforms: Platform[] = [
   },
   {
     name: 'Shopify',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzk1QkYxNyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjkgMS4yYy0uNi0uMS0xLjItLjEtMS45LS4xQzYuMyAxLjEgMi44IDMgMS40IDQuNmMtMS4xIDEuMy0uOCAzLjIuNiA1LjFsNS41IDYuMWMuMS4xLjMuMS40IDBMOS4xIDEwLjVjLjUtLjUgMS4yLS44IDEuOS0uOC43IDAgMS4zLjMgMS44LjhsNC43IDUuMmMuMS4xLjMuMS40IDAsMS0uOCAyLjMtLjggMS0uMSAyLS40IDIuOC0xLjJsNC43LTQuN2MuNy0uNyAxLjEtMS42IDEuMS0yLjYgMC0xLS40LTEuOS0xLjEtMi42TDEzLjkgMS4yWiIvPgo8L3N2Zz4K'
+    logo: '/attached_assets/Shopify.com_Logo_2_1750070139007.webp'
   },
   {
     name: 'WooCommerce',
