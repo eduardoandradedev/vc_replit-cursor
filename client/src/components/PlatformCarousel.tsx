@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import shopifyLogo from '@assets/Shopify.com_Logo_2_1750070139007.webp';
 import nuvemshopLogo from '@assets/NuvemShop.png';
+import woocommerceLogo from '@assets/WooCommerce.png';
+import lojaintegradaLogo from '@assets/lojaIntegrada.png';
+import vtexLogo from '@assets/VTEX.png';
+import magentoLogo from '@assets/magentoLogo.png';
+import googleAdsLogo from '@assets/googleadsLogo.png';
+import metaLogo from '@assets/metaLogo.png';
+import tagmanagerLogo from '@assets/tagmanagerLogo.png';
 
 interface Platform {
   name: string;
@@ -11,17 +18,17 @@ interface Platform {
 const platforms: Platform[] = [
   {
     name: 'Meta Ads',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzdGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDEyLjA3M0MyNCA1LjQwNSAxOC42MjcgMCAxMiAwUzAgNS40MDUgMCAxMi4wNzNDMCAxOC4xIDQuMzg4IDIzLjA5NCA5Ljg3NSAyNHYtOC40MzlINi45MDNWMTIuMDczSDkuODc1VjkuNDEzYzAtMi45NDQgMS43OTQtNC41NTYgNC41MzMtNC41NTYgMS4zMTIgMCAyLjY4Ni4yMjUgMi42ODYuMjI1djIuOTcySDE1LjgzYy0xLjQ5MSAwLTEuOTU2LjkxOS0xLjk1NiAxLjg1OXYyLjE2aDMuMzI4bC0uNTMyIDMuNDg4aC0yLjc5NlYyNEMxOS42MTIgMjMuMDk0IDI0IDE4LjEgMjQgMTIuMDczWiIvPgo8L3N2Zz4K',
-    height: 32
+    logo: metaLogo,
+    height: 40
   },
   {
     name: 'Google Ads',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRBOUJGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjggMTJjMC02LjYyNy01LjM3My0xMi0xMi0xMlMtLjIgNS4zNzMtLjIgMTJzNS4zNzMgMTIgMTIgMTIgMTItNS4zNzMgMTItMTJaTTE3LjUgMTJjMCAwIDMuNS0xLjYgMy41LTQgMC0xLjktMS42LTMuNS0zLjUtMy41cy0zLjUgMS42LTMuNSAzLjUgMS42IDMuNSAzLjUgMy41aDEuNVoiLz4KPC9zdmc+',
+    logo: googleAdsLogo,
     height: 32
   },
   {
     name: 'GTM',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRBOUJGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJjNS41MjMgMCAxMCA0LjQ3NyAxMCAxMHMtNC40NzcgMTAtMTAgMTBTMiAxNy41MjMgMiAxMiA2LjQ3NyAyIDEyIDJabTcuNzUgMTBjMCA0LjI3Ny0zLjQ3MyA3Ljc1LTcuNzUgNy43NVM0LjI1IDE2LjI3NyA0LjI1IDEyIDcuNzIzIDQuMjUgMTIgNC4yNXM3Ljc1IDMuNDczIDcuNzUgNy43NVoiLz4KPC9zdmc+',
+    logo: tagmanagerLogo,
     height: 24
   },
   {
@@ -31,8 +38,8 @@ const platforms: Platform[] = [
   },
   {
     name: 'WooCommerce',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzk2NTg4QSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjEgMTBjLS43LTEuNy0yLjMtMy01LjEtM2gtLjZjLS44IDAtMS41LjYtMS43IDEuNGwtMS4xIDQuNEwxMiA3LjZjLS4yLS44LS45LTEuNC0xLjctMS40aC0uN2MtMi44IDAtNC4zIDEuMy01LjEgM0MzLjcgMTEuNyAzIDEzLjkgMyAxNi41YzAgMi42LjcgNC44IDEuNSA2LjUuNyAxLjcgMi4zIDMgNS4xIDNoLjdjLjggMCAxLjUtLjYgMS43LTEuNGwxLjEtNC40IDIuNSA1LjJjLjIuOC45IDEuNCAxLjcgMS40aC43YzIuOCAwIDQuMy0xLjMgNS4xLTMgLjctMS43IDEuNS0zLjkgMS41LTYuNXMtLjctNC44LTEuNS02LjVaIi8+Cjwvc3ZnPgo=',
-    height: 32
+    logo: woocommerceLogo,
+    height: 50
   },
   {
     name: 'NuvemShop',
@@ -41,18 +48,18 @@ const platforms: Platform[] = [
   },
   {
     name: 'VTEX',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0ZGMDA1NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgOGgyMGwtOCA4TDIgOFptMTAgOUwyIDlIMjJMMTIgMTdaIi8+Cjwvc3ZnPgo=',
+    logo: vtexLogo,
     height: 32
   },
   {
     name: 'Loja Integrada',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzdGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJhMTAgMTAgMCAxIDEgMCAyMCAxMCAxMCAwIDAgMSAwLTIwWm0wIDJhOCA4IDAgMSAwIDAgMTYgOCA4IDAgMCAwIDAtMTZaIi8+Cjwvc3ZnPgo=',
-    height: 32
+    logo: lojaintegradaLogo,
+    height: 56
   },
   {
     name: 'Magento',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0VFNjcyRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMy41IDYuNXYxMS4zTDEyIDIybDguNS00LjJWNi41TDEyIDJabTUuNSAxNC41TDEyIDE5bC01LjUtMi41VjguNUwxMiA2bDUuNSAyLjV2OFoiLz4KPC9zdmc+',
-    height: 32
+    logo: magentoLogo,
+    height: 56
   }
 ];
 
@@ -64,7 +71,7 @@ const getLogoHeight = (height?: number) => {
 export default function PlatformCarousel() {
   return (
     <div className="w-full overflow-hidden mt-16">
-      <div className="text-center mb-8">
+      <div className="text-center">
         <div className="flex items-center justify-center gap-3 mb-3">
           <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
           <p className="text-sm font-medium text-white/60">
