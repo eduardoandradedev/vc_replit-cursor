@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import shopifyLogo from '@assets/Shopify.com_Logo_2_1750070139007.webp';
+import nuvemshopLogo from '@assets/NuvemShop.png';
 
 interface Platform {
   name: string;
@@ -29,7 +30,7 @@ const platforms: Platform[] = [
   },
   {
     name: 'NuvemShop',
-    logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzdGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMlptMCAxOGMtNC40MjEgMC04LTMuNTc5LTgtOHMzLjU3OS04IDgtOCA4IDMuNTc5IDggOC0zLjU3OSA4LTggOFptMy01YzEuMzggMCAyLjUtMS4xMiAyLjUtMi41UzE2LjM4IDEwIDEzIDEwIDEwLjUgMTEuMTIgMTAuNSAxMi41IDExLjYyIDE1IDEzIDE1WiIvPgo8L3N2Zz4K'
+    logo: nuvemshopLogo
   },
   {
     name: 'VTEX',
