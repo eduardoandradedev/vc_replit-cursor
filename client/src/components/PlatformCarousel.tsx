@@ -86,8 +86,8 @@ export default function PlatformCarousel() {
         </div>
         
         {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0d1020] via-[#0d1020]/80 to-transparent pointer-events-none" />
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0d1020] via-[#0d1020]/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
       </div>
     </div>
   );
