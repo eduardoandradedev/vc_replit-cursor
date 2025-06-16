@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, AlertCircle, Send } from "lucide-react";
@@ -268,6 +269,24 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                   )}
                 </div>
 
+                {/* Agreement checkbox */}
+                <div className="flex items-start space-x-3">
+                  <Checkbox
+                    id="agreement"
+                    checked={form.watch("agreement")}
+                    onCheckedChange={(checked: boolean) => {
+                      form.setValue("agreement", checked);
+                      trackFieldChange('agreement', checked ? 'true' : 'false');
+                    }}
+                    className="border-slate-600 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 mt-1"
+                  />
+                  <Label htmlFor="agreement" className="text-sm text-slate-300 leading-relaxed cursor-pointer">
+                    Concordo em receber contato da equipe e estou ciente de que meus dados serão utilizados para apresentação da proposta de implementação de rastreamento.
+                  </Label>
+                </div>
+                {form.formState.errors.agreement && (
+                  <p className="text-red-400 text-sm mt-2">{form.formState.errors.agreement.message}</p>
+                )}
                 
                 {/* Error message */}
                 {error && (
