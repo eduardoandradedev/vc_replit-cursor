@@ -96,7 +96,7 @@ export default function HeroSection() {
       </div>
 
       {/* Carrossel de Plataformas - Full Width */}
-      <div className="absolute bottom-16 md:bottom-20 left-0 right-0 z-10">
+      <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-10">
         <PlatformCarousel />
       </div>
     </section>
