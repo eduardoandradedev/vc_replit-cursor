@@ -46,29 +46,27 @@ const platforms: Platform[] = [
 
 export default function PlatformCarousel() {
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="w-full overflow-hidden">
       <div className="text-center mb-8">
         <p className="text-sm font-medium text-white/60 mb-6">
           Integração com as principais plataformas
         </p>
       </div>
       
-      <div className="relative h-16 overflow-hidden">
+      <div className="relative overflow-hidden py-4">
         {/* Continuous scrolling animation */}
-        <div className="flex animate-scroll">
+        <div className="flex animate-scroll whitespace-nowrap">
           {/* First set */}
           {platforms.map((platform, index) => (
             <div
               key={`first-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4"
+              className="flex-shrink-0 flex items-center justify-center mx-8"
             >
-              <div className="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <img
-                  src={platform.logo}
-                  alt={platform.name}
-                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
+              <img
+                src={platform.logo}
+                alt={platform.name}
+                className="h-8 w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+              />
             </div>
           ))}
           
@@ -76,23 +74,21 @@ export default function PlatformCarousel() {
           {platforms.map((platform, index) => (
             <div
               key={`second-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4"
+              className="flex-shrink-0 flex items-center justify-center mx-8"
             >
-              <div className="flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <img
-                  src={platform.logo}
-                  alt={platform.name}
-                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
+              <img
+                src={platform.logo}
+                alt={platform.name}
+                className="h-8 w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+              />
             </div>
           ))}
         </div>
+        
+        {/* Gradient overlays for smooth fade effect */}
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0d1020] via-[#0d1020]/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0d1020] via-[#0d1020]/80 to-transparent pointer-events-none" />
       </div>
-      
-      {/* Gradient overlays for smooth fade effect */}
-      <div className="absolute top-8 left-0 w-20 h-16 bg-gradient-to-r from-[#0d1020] to-transparent pointer-events-none" />
-      <div className="absolute top-8 right-0 w-20 h-16 bg-gradient-to-l from-[#0d1020] to-transparent pointer-events-none" />
     </div>
   );
 }

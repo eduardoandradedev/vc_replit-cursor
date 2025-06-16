@@ -79,11 +79,6 @@ export default function HeroSection() {
             Entrar em contato
           </Button>
 
-          {/* Carrossel de Plataformas */}
-          <div className="mt-12 md:mt-16">
-            <PlatformCarousel />
-          </div>
-
           {/* Indicadores de confiança */}
           <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70">
             {[
@@ -98,6 +93,11 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Carrossel de Plataformas - Full Width */}
+      <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-10">
+        <PlatformCarousel />
       </div>
     </section>
   );
