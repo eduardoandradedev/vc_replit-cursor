@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { z } from "zod";
 import { insertLeadSchema } from "@shared/schema";
+import { storage } from "./storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Lead submission endpoint
@@ -10,38 +11,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate request body
       const validatedData = insertLeadSchema.parse(req.body);
       
+      // Save lead locally first
+      const savedLead = await storage.createLead(validatedData);
+      console.log("Lead saved locally:", savedLead.id);
+      
       // Get n8n webhook URL from environment
       const webhookUrl = process.env.N8N_WEBHOOK_URL || process.env.WEBHOOK_URL;
       
       if (!webhookUrl) {
-        console.error("N8N_WEBHOOK_URL not configured");
-        return res.status(500).json({ 
-          success: false, 
-          message: "Configuração do webhook não encontrada" 
+        console.log("N8N_WEBHOOK_URL not configured, lead saved locally only");
+        return res.json({ 
+          success: true, 
+          message: "Lead recebido e será processado em breve" 
         });
       }
 
-      console.log("Sending to webhook:", webhookUrl);
+      // Try to send to webhook (but don't fail if it doesn't work)
+      try {
+        console.log("Attempting to send to webhook:", webhookUrl);
 
-      // Send data to n8n webhook
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...validatedData,
-          timestamp: new Date().toISOString(),
-          source: 'landing_page'
-        })
-      });
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...validatedData,
+            timestamp: new Date().toISOString(),
+            source: 'landing_page',
+            leadId: savedLead.id
+          })
+        });
 
-      console.log("Webhook response status:", response.status);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.log("Webhook error response:", errorText);
-        throw new Error(`Webhook request failed: ${response.status} - ${errorText}`);
+        console.log("Webhook response status:", response.status);
+        
+        if (response.ok) {
+          console.log("Lead successfully sent to webhook");
+        } else {
+          console.log("Webhook failed, but lead is saved locally");
+        }
+      } catch (webhookError) {
+        console.log("Webhook error (lead still saved locally):", webhookError);
       }
 
       res.json({ 
@@ -66,6 +76,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({
         success: false,
         message: "Erro interno do servidor"
+      });
+    }
+  });
+
+  // Get all leads endpoint (for testing/admin purposes)
+  app.get("/api/leads", async (req, res) => {
+    try {
+      const leads = await storage.getLeads();
+      res.json({
+        success: true,
+        leads: leads,
+        count: leads.length
+      });
+    } catch (error) {
+      console.error("Error fetching leads:", error);
+      res.status(500).json({
+        success: false,
+        message: "Erro ao buscar leads"
       });
     }
   });
