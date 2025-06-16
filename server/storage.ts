@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser } from "@shared/schema";
+import { users, type User, type InsertUser, type Lead, type InsertLead } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -7,15 +7,21 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  createLead(lead: InsertLead): Promise<Lead>;
+  getLeads(): Promise<Lead[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
-  currentId: number;
+  private leads: Map<number, Lead>;
+  private currentUserId: number;
+  private currentLeadId: number;
 
   constructor() {
     this.users = new Map();
-    this.currentId = 1;
+    this.leads = new Map();
+    this.currentUserId = 1;
+    this.currentLeadId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -29,10 +35,25 @@ export class MemStorage implements IStorage {
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
+    const id = this.currentUserId++;
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
     return user;
+  }
+
+  async createLead(insertLead: InsertLead): Promise<Lead> {
+    const id = this.currentLeadId++;
+    const lead: Lead = { 
+      ...insertLead, 
+      id,
+      createdAt: new Date()
+    };
+    this.leads.set(id, lead);
+    return lead;
+  }
+
+  async getLeads(): Promise<Lead[]> {
+    return Array.from(this.leads.values());
   }
 }
 
