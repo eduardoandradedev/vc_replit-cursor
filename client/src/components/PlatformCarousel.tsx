@@ -63,7 +63,7 @@ const getLogoHeight = (height?: number) => {
 
 export default function PlatformCarousel() {
   return (
-    <div className="w-full overflow-hidden mt-16">
+    <div className="w-full overflow-hidden mt-24">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-3">
           <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
