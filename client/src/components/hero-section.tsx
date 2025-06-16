@@ -1,6 +1,7 @@
 // components/HeroSection.tsx
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import PlatformCarousel from "@/components/PlatformCarousel";
 import logoPath from "@assets/logo_1750068927420.png";
 
 export default function HeroSection() {
@@ -78,8 +79,13 @@ export default function HeroSection() {
             Entrar em contato
           </Button>
 
+          {/* Carrossel de Plataformas */}
+          <div className="mt-12 md:mt-16">
+            <PlatformCarousel />
+          </div>
+
           {/* Indicadores de confiança */}
-          <div className="mt-12 md:mt-16 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70">
+          <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70">
             {[
               "Implementação Profissional",
               "Negócios R$ 50K+/mês",
