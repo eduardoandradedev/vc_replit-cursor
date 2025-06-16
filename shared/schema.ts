@@ -31,7 +31,7 @@ export const insertLeadSchema = createInsertSchema(leads).omit({
 }).extend({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
   whatsapp: z.string().min(10, "WhatsApp deve ter pelo menos 10 dígitos"),
-  storeUrl: z.string().url("Digite uma URL válida"),
+  storeUrl: z.string().min(3, "Digite o domínio da sua loja").regex(/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.([a-zA-Z]{2,}|[a-zA-Z]{2,}\.[a-zA-Z]{2,})$/, "Digite um domínio válido (ex: minhaloja.com.br)"),
   monthlyRevenue: z.enum(["50k-100k", "100k-300k", "300k+"], {
     required_error: "Selecione o faturamento mensal",
   }),

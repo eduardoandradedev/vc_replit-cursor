@@ -166,11 +166,11 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                   </Label>
                   <Input
                     id="storeUrl"
-                    type="url"
+                    type="text"
                     {...form.register("storeUrl")}
                     onFocus={() => trackFieldFocus('storeUrl')}
                     className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500/20"
-                    placeholder="https://sualojaexemplo.com.br"
+                    placeholder="sualojaexemplo.com.br"
                   />
                   {form.formState.errors.storeUrl && (
                     <p className="text-red-400 text-sm mt-2">{form.formState.errors.storeUrl.message}</p>

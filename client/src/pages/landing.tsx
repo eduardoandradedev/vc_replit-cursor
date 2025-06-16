@@ -7,6 +7,7 @@ import ContactFormSection from "@/components/contact-form-section";
 import ConfirmationSection from "@/components/confirmation-section";
 import { useState } from "react";
 import ReasonsSection from "@/components/ReasonsSection";
+import { PlataformasAtendidasCarousel } from "@/components/PlataformasAtendidasCarousel";
 
 export default function Landing() {
   const [showConfirmation, setShowConfirmation] = useState(false);
