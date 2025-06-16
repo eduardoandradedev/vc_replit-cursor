@@ -44,7 +44,11 @@ export default function Landing() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Tracking Pro</h3>
+              <img 
+                src="/attached_assets/logo_1750068927420.png" 
+                alt="Tracking Pro" 
+                className="h-12 md:h-16 w-auto mx-auto mb-4"
+              />
               <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
             </div>
             

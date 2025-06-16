@@ -19,7 +19,11 @@ export default function HeroSection() {
       {/* Navegação */}
       <nav className="absolute top-0 left-0 right-0 p-4 md:p-6 z-20">
         <div className="container mx-auto flex items-center justify-between">
-          <span className="text-white/70 font-bold text-lg md:text-xl">Tracking Pro</span>
+          <img 
+            src="/attached_assets/logo_1750068927420.png" 
+            alt="Tracking Pro" 
+            className="h-8 md:h-10 w-auto"
+          />
 
           <Button
             onClick={scrollToForm}
