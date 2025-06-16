@@ -67,32 +67,33 @@ const platforms: Platform[] = [
 const getResponsiveClasses = (height?: number) => {
   const baseHeight = height || 32;
   
-  if (baseHeight <= 24) return "h-4 sm:h-5 lg:h-6"; // pequeno
-  if (baseHeight <= 32) return "h-5 sm:h-6 lg:h-8"; // médio
-  if (baseHeight <= 40) return "h-6 sm:h-8 lg:h-10"; // grande
-  return "h-8 sm:h-10 lg:h-12"; // extra grande
+  // Tamanhos muito menores para mobile para evitar quebra do layout
+  if (baseHeight <= 24) return "h-3 sm:h-4 md:h-5 lg:h-6"; // pequeno
+  if (baseHeight <= 32) return "h-4 sm:h-5 md:h-6 lg:h-8"; // médio
+  if (baseHeight <= 40) return "h-4 sm:h-6 md:h-8 lg:h-10"; // grande
+  return "h-5 sm:h-7 md:h-9 lg:h-12"; // extra grande
 };
 
 export default function PlatformCarousel() {
   return (
-    <div className="w-full overflow-hidden mt-8 sm:mt-12 lg:mt-16">
-      <div className="text-center mb-6 sm:mb-8">
+    <div className="w-full overflow-hidden mt-6 sm:mt-8 lg:mt-16">
+      <div className="text-center mb-4 sm:mb-6">
         <div className="flex items-center justify-center gap-2 sm:gap-3">
-          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
           <p className="text-xs sm:text-sm font-medium text-white/60">
             Integração com as principais plataformas
           </p>
         </div>
       </div>
       
-      <div className="relative overflow-hidden py-2 sm:py-4">
+      <div className="relative overflow-hidden py-1 sm:py-2 md:py-4">
         {/* Continuous scrolling animation */}
         <div className="flex animate-scroll whitespace-nowrap">
           {/* First set */}
           {platforms.map((platform, index) => (
             <div
               key={`first-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4 sm:mx-6 lg:mx-8"
+              className="flex-shrink-0 flex items-center justify-center mx-2 sm:mx-4 md:mx-6 lg:mx-8"
             >
               <img
                 src={platform.logo}
@@ -106,7 +107,7 @@ export default function PlatformCarousel() {
           {platforms.map((platform, index) => (
             <div
               key={`second-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4 sm:mx-6 lg:mx-8"
+              className="flex-shrink-0 flex items-center justify-center mx-2 sm:mx-4 md:mx-6 lg:mx-8"
             >
               <img
                 src={platform.logo}
@@ -118,8 +119,8 @@ export default function PlatformCarousel() {
         </div>
         
         {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute top-0 left-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-r from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
-        <div className="absolute top-0 right-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-l from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 w-8 sm:w-16 md:w-24 lg:w-32 h-full bg-gradient-to-r from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-8 sm:w-16 md:w-24 lg:w-32 h-full bg-gradient-to-l from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
       </div>
     </div>
   );
