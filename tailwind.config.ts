@@ -91,24 +91,32 @@ export default {
           '50%': { transform: 'translateY(-50vh) translateX(15px) scale(1.1)', opacity: '0.6' },
           '100%': { transform: 'translateY(-100vh) translateX(-15px) scale(1.2)', opacity: '0' },
         },
-        // ✨ Animação de fagulha adicionada aqui
         'sparkle': {
           '0%':   { transform: 'translateY(0) translateX(0) scale(1)', opacity: '1' },
           '25%':  { transform: 'translateY(-25vh) translateX(20px) scale(1.1)', opacity: '0.8' },
           '50%':  { transform: 'translateY(-50vh) translateX(-15px) scale(1)', opacity: '1' },
           '75%':  { transform: 'translateY(-75vh) translateX(10px) scale(1.1)', opacity: '0.5' },
           '100%': { transform: 'translateY(-100vh) translateX(-5px) scale(1.2)', opacity: '0' },
-        }
+        },
+        // ✨ NOVO KEYFRAME PARA O CARROSSEL DE LOGOS ✨
+        "infinite-scroll": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'rise-slow': 'rise-slow 40s linear infinite',
-        'rise-medium': 'rise-medium 30s linear infinite',
-        'rise-fast': 'rise-fast 22s linear infinite',
-        'rise-float': 'rise-float 35s linear infinite',
-        // ✨ Classe da animação de fagulha adicionada aqui
-        'sparkle': 'sparkle 25s linear infinite',
+        
+        // ✨ VELOCIDADES DAS PARTÍCULAS DIMINUÍDAS (TEMPO AUMENTADO) ✨
+        'rise-slow': 'rise-slow 60s linear infinite',
+        'rise-medium': 'rise-medium 45s linear infinite',
+        'rise-fast': 'rise-fast 35s linear infinite',
+        'rise-float': 'rise-float 50s linear infinite',
+        'sparkle': 'sparkle 40s linear infinite',
+
+        // ✨ NOVA ANIMAÇÃO PARA O CARROSSEL DE LOGOS ✨
+        "infinite-scroll": "infinite-scroll 40s linear infinite",
       },
     },
   },

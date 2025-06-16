@@ -12,6 +12,7 @@ import { Loader2, AlertCircle, Send } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { insertLeadSchema, type InsertLead } from "@shared/schema";
 import { trackEvent } from "@/lib/analytics";
+import SuccessPopup from "./SuccessPopup";
 
 interface ContactFormSectionProps {
   onSuccess: () => void;
@@ -21,6 +22,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formLoadTime] = useState(Date.now());
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   
   const form = useForm<InsertLead>({
     resolver: zodResolver(insertLeadSchema),
@@ -67,6 +69,14 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       if (response.ok) {
         // Track successful submission
         trackEvent('form_submit_success', 'lead_form', 'contact');
+        
+        // Reset form
+        form.reset();
+        
+        // Show success popup
+        setShowSuccessPopup(true);
+        
+        // Call onSuccess callback
         onSuccess();
       }
     } catch (err: any) {
@@ -290,6 +300,12 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
           </Card>
         </div>
       </div>
+
+      {/* Success Popup */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup} 
+        onClose={() => setShowSuccessPopup(false)} 
+      />
     </section>
   );
 }
