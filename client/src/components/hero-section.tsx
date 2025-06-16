@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import PlatformCarousel from "@/components/PlatformCarousel";
-import logoPath from "@assets/logo_1750068927420.png";
+import logoPath from "@assets/logoTrackerPro.png";
 
 export default function HeroSection() {
   const scrollToForm = () => {

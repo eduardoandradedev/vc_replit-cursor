@@ -31,9 +31,7 @@ export default function Landing() {
       <ProblemSection />
       <ProcessSection />
       
-      {!showConfirmation && (
-        <ContactFormSection onSuccess={handleFormSuccess} />
-      )}
+      <ContactFormSection onSuccess={handleFormSuccess} />
       
       {showConfirmation && (
         <ConfirmationSection />
