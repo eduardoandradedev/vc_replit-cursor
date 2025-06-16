@@ -99,8 +99,10 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 md:mb-8">
-              Solicite contato com nosso time
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight drop-shadow-md">
+              <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
+                Solicite contato com nosso time
+              </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed px-4">
               Preencha os dados abaixo para avaliarmos se há fit para nossa solução.

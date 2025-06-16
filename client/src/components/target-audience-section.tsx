@@ -7,8 +7,10 @@ export default function TargetAudienceSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 md:mb-8 px-4">
-              Essa solução é para você se:
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 px-4 leading-tight drop-shadow-md">
+              <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
+                Essa solução é para você se:
+              </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
           </div>

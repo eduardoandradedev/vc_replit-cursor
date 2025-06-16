@@ -28,8 +28,10 @@ export default function ProcessSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              Como funciona o processo
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight drop-shadow-md">
+              <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
+                Como funciona o processo
+              </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
           </div>

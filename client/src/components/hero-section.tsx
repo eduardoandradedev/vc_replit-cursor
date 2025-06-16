@@ -43,7 +43,7 @@ export default function HeroSection() {
             </span>
             <br />
             <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
-              Mas seu rastreamento sabota o algoritmo.
+              Mas seu rastreamento sabota o algoritmo?
             </span>
           </h1>
 

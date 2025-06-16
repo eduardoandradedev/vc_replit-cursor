@@ -35,11 +35,13 @@ export default function ServiceDescriptionSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-              Rastreamento Profissional para e-commerces que querem 
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight drop-shadow-md">
+              <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
+                Rastreamento Profissional para e-commerces que querem 
+              </span>
               <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"> escalar com precisão</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
               Implementação completa que resolve todos os problemas de tracking do seu negócio.
             </p>
           </div>
