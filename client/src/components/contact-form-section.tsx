@@ -104,8 +104,8 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                 Solicite contato com nosso time
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed px-4">
-              Preencha os dados abaixo para avaliarmos se há fit para nossa solução.
+            <p className="text-lg md:text-x2 text-gray-300 leading-relaxed px-4">
+              Preencha os dados abaixo para avaliarmos se está elegível para nossa solução.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-6 md:mt-8"></div>
           </div>
