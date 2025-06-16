@@ -5,66 +5,60 @@ import nuvemshopLogo from '@assets/NuvemShop.png';
 interface Platform {
   name: string;
   logo: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  height?: number; // altura em pixels
 }
 
 const platforms: Platform[] = [
   {
     name: 'Meta Ads',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzdGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDEyLjA3M0MyNCA1LjQwNSAxOC42MjcgMCAxMiAwUzAgNS40MDUgMCAxMi4wNzNDMCAxOC4xIDQuMzg4IDIzLjA5NCA5Ljg3NSAyNHYtOC40MzlINi45MDNWMTIuMDczSDkuODc1VjkuNDEzYzAtMi45NDQgMS43OTQtNC41NTYgNC41MzMtNC41NTYgMS4zMTIgMCAyLjY4Ni4yMjUgMi42ODYuMjI1djIuOTcySDE1LjgzYy0xLjQ5MSAwLTEuOTU2LjkxOS0xLjk1NiAxLjg1OXYyLjE2aDMuMzI4bC0uNTMyIDMuNDg4aC0yLjc5NlYyNEMxOS42MTIgMjMuMDk0IDI0IDE4LjEgMjQgMTIuMDczWiIvPgo8L3N2Zz4K',
-    size: 'md'
+    height: 32
   },
   {
     name: 'Google Ads',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRBOUJGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjggMTJjMC02LjYyNy01LjM3My0xMi0xMi0xMlMtLjIgNS4zNzMtLjIgMTJzNS4zNzMgMTIgMTIgMTIgMTItNS4zNzMgMTItMTJaTTE3LjUgMTJjMCAwIDMuNS0xLjYgMy41LTQgMC0xLjktMS42LTMuNS0zLjUtMy41cy0zLjUgMS42LTMuNSAzLjUgMS42IDMuNSAzLjUgMy41aDEuNVoiLz4KPC9zdmc+',
-    size: 'md'
+    height: 32
   },
   {
     name: 'GTM',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRBOUJGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJjNS41MjMgMCAxMCA0LjQ3NyAxMCAxMHMtNC40NzcgMTAtMTAgMTBTMiAxNy41MjMgMiAxMiA2LjQ3NyAyIDEyIDJabTcuNzUgMTBjMCA0LjI3Ny0zLjQ3MyA3Ljc1LTcuNzUgNy43NVM0LjI1IDE2LjI3NyA0LjI1IDEyIDcuNzIzIDQuMjUgMTIgNC4yNXM3Ljc1IDMuNDczIDcuNzUgNy43NVoiLz4KPC9zdmc+',
-    size: 'sm'
+    height: 24
   },
   {
     name: 'Shopify',
     logo: shopifyLogo,
-    size: 'lg'
+    height: 40
   },
   {
     name: 'WooCommerce',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzk2NTg4QSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjEgMTBjLS43LTEuNy0yLjMtMy01LjEtM2gtLjZjLS44IDAtMS41LjYtMS43IDEuNGwtMS4xIDQuNEwxMiA3LjZjLS4yLS44LS45LTEuNC0xLjctMS40aC0uN2MtMi44IDAtNC4zIDEuMy01LjEgM0MzLjcgMTEuNyAzIDEzLjkgMyAxNi41YzAgMi42LjcgNC44IDEuNSA2LjUuNyAxLjcgMi4zIDMgNS4xIDNoLjdjLjggMCAxLjUtLjYgMS43LTEuNGwxLjEtNC40IDIuNSA1LjJjLjIuOC45IDEuNCAxLjcgMS40aC43YzIuOCAwIDQuMy0xLjMgNS4xLTMgLjctMS43IDEuNS0zLjkgMS41LTYuNXMtLjctNC44LTEuNS02LjVaIi8+Cjwvc3ZnPgo=',
-    size: 'md'
+    height: 32
   },
   {
     name: 'NuvemShop',
     logo: nuvemshopLogo,
-    size: 'xl'
+    height: 48
   },
   {
     name: 'VTEX',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0ZGMDA1NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgOGgyMGwtOCA4TDIgOFptMTAgOUwyIDlIMjJMMTIgMTdaIi8+Cjwvc3ZnPgo=',
-    size: 'md'
+    height: 32
   },
   {
     name: 'Loja Integrada',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzdGRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJhMTAgMTAgMCAxIDEgMCAyMCAxMCAxMCAwIDAgMSAwLTIwWm0wIDJhOCA4IDAgMSAwIDAgMTYgOCA4IDAgMCAwIDAtMTZaIi8+Cjwvc3ZnPgo=',
-    size: 'md'
+    height: 32
   },
   {
     name: 'Magento',
     logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0VFNjcyRiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMy41IDYuNXYxMS4zTDEyIDIybDguNS00LjJWNi41TDEyIDJabTUuNSAxNC41TDEyIDE5bC01LjUtMi41VjguNUwxMiA2bDUuNSAyLjV2OFoiLz4KPC9zdmc+',
-    size: 'md'
+    height: 32
   }
 ];
 
-// Função para obter o tamanho da logo
-const getLogoSize = (size?: string) => {
-  switch (size) {
-    case 'sm': return 'h-6';
-    case 'md': return 'h-8';
-    case 'lg': return 'h-10';
-    case 'xl': return 'h-12';
-    default: return 'h-8';
-  }
+// Função para obter o estilo da altura da logo
+const getLogoHeight = (height?: number) => {
+  return height ? { height: `${height}px` } : { height: '32px' };
 };
 
 export default function PlatformCarousel() {
@@ -88,7 +82,8 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className={`${getLogoSize(platform.size)} w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300`}
+                style={getLogoHeight(platform.height)}
+                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
               />
             </div>
           ))}
@@ -102,7 +97,8 @@ export default function PlatformCarousel() {
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className={`${getLogoSize(platform.size)} w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300`}
+                style={getLogoHeight(platform.height)}
+                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
               />
             </div>
           ))}
