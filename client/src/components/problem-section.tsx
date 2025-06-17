@@ -13,7 +13,7 @@ export default function ProblemSection() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-red-900/20 to-red-800/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 px-4 leading-tight drop-shadow-md">
+          <h2 className="mb-6 md:mb-8 lg:mb-12 text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.20] drop-shadow-md">
             <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
               O impacto dos dados ruins no seu 
             </span>

@@ -111,7 +111,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight drop-shadow-md">
+            <h2 className="mb-6 md:mb-8 lg:mb-12 text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.20] drop-shadow-md">
               <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
                 Solicite contato com nosso time
               </span>
@@ -280,7 +280,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     }}
                     className="border-slate-600 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 mt-1"
                   />
-                  <Label htmlFor="agreement" className="text-sm text-slate-300 leading-relaxed cursor-pointer">
+                  <Label htmlFor="agreement" className="text-[0.81rem] text-slate-300 leading-relaxed cursor-pointer mb-2 md:mb-6 lg:mb-6">
                     Concordo em receber contato da equipe e estou ciente de que meus dados serão utilizados para apresentação da proposta de implementação de rastreamento.
                   </Label>
                 </div>
@@ -301,7 +301,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                   type="submit"
                   disabled={isSubmitting}
                   size="lg"
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-xl shadow-orange-500/30 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/40"
+                  className="mb-8 md:mb-12 lg:mb-16 w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[0.85rem] sm:text-lg font-semibold px-8 py-4 rounded-xl shadow-xl shadow-orange-500/30 transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/40"
                 >
                   {isSubmitting ? (
                     <>
@@ -310,7 +310,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                     </>
                   ) : (
                     <>
-                      <Send className="mr-3 h-5 w-5" />
+                      <Send className="mr-1 md:mr-3 h-5 w-5" />
                       Solicitar contato com especialista
                     </>
                   )}

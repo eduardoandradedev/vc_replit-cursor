@@ -58,11 +58,11 @@ const reasonsData = [
 
 export default function ReasonsSection() {
   return (
-    <section className="bg-[#06070e] pt-6 md:pt-8 pb-20 sm:pb-24">
+    <section className="bg-[#06070e] pt-6 md:pt-24 pb-20 sm:pb-24">
       <div className="container mx-auto px-6">
         {/* Título da Seção */}
-        <div className="max-w-4l mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight drop-shadow-md">
+        <div className="max-w-4l mx-auto text-center mb-8">
+          <h2 className="mb-6 md:mb-12 lg:mb-16 text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.20] drop-shadow-md">
             <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
               Razões para usar o GTM via servidor
             </span>
