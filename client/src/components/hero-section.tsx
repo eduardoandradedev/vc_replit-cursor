@@ -80,24 +80,31 @@ export default function HeroSection() {
           </Button>
 
           {/* Indicadores de confiança */}
-          <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70">
-            {[
-              "Implementação Profissional",
-              "Negócios R$ 50K+/mês",
-              "Poucos Clientes/Mês",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600" />
-                <span className="whitespace-nowrap">{item}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+          <div className={`mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-8 text-xs sm:text-sm text-gray-400/70
 
+            /* 4º filho ocupa 100% da linha e centraliza seu conteúdo */
+            [&>*:nth-child(4)]:w-full 
+            [&>*:nth-child(4)]:justify-center
+            `}
+        >
+          {[
+            "Implementação Profissional",
+            "Negócios R$ 50K+/mês",
+            "Poucos Clientes/Mês",
+            "Integração com as principais plataformas"
+          ].map(item => (
+            <span key={item} className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600" />
+              <span className="whitespace-nowrap">{item}</span>
+            </span>
+          ))}
+        </div>
+
+        </div>
       {/* Carrossel de Plataformas - Full Width */}
-      <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-10">
+      <div className="bottom-8 md:bottom-12 left-0 right-0 z-10">
         <PlatformCarousel />
+      </div>
       </div>
     </section>
   );

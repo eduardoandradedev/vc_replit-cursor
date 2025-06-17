@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import shopifyLogo from '@assets/Shopify.com_Logo_2_1750070139007.webp';
 import nuvemshopLogo from '@assets/NuvemShop.png';
 import woocommerceLogo from '@assets/WooCommerce.png';
@@ -12,114 +11,59 @@ import tagmanagerLogo from '@assets/tagmanagerLogo.png';
 interface Platform {
   name: string;
   logo: string;
-  height?: number; // altura em em (unidades responsivas)
+  heightClasses: string;
 }
 
 const platforms: Platform[] = [
-  {
-    name: 'Meta Ads',
-    logo: metaLogo,
-    height: 2.5
-  },
-  {
-    name: 'Google Ads',
-    logo: googleAdsLogo,
-    height: 2.75
-  },
-  {
-    name: 'GTM',
-    logo: tagmanagerLogo,
-    height: 3
-  },
-  {
-    name: 'Shopify',
-    logo: shopifyLogo,
-    height: 2.5
-  },
-  {
-    name: 'WooCommerce',
-    logo: woocommerceLogo,
-    height: 3.1
-  },
-  {
-    name: 'NuvemShop',
-    logo: nuvemshopLogo,
-    height: 3.6
-  },
-  {
-    name: 'VTEX',
-    logo: vtexLogo,
-    height: 2
-  },
-  {
-    name: 'Loja Integrada',
-    logo: lojaintegradaLogo,
-    height: 3.5
-  },
-  {
-    name: 'Magento',
-    logo: magentoLogo,
-    height: 3.5
-  }
+  { name: 'Meta Ads',       logo: metaLogo,          heightClasses: 'h-6 sm:h-8 md:h-7'  },
+  { name: 'Google Ads',     logo: googleAdsLogo,     heightClasses: 'h-7 sm:h-9 md:h-10' },
+  { name: 'GTM',            logo: tagmanagerLogo,    heightClasses: 'h-8 sm:h-10 md:h-11'},
+  { name: 'Shopify',        logo: shopifyLogo,       heightClasses: 'h-6 sm:h-8 md:h-9' },
+  { name: 'WooCommerce',    logo: woocommerceLogo,   heightClasses: 'h-8 sm:h-10 md:h-12'},
+  { name: 'NuvemShop',      logo: nuvemshopLogo,     heightClasses: 'h-9 sm:h-11 md:h-14'},
+  { name: 'VTEX',           logo: vtexLogo,          heightClasses: 'h-5 sm:h-7 md:h-8'  },
+  { name: 'Loja Integrada', logo: lojaintegradaLogo, heightClasses: 'h-10 sm:h-11 md:h-14'},
+  { name: 'Magento',        logo: magentoLogo,       heightClasses: 'h-8 sm:h-11 md:h-9' }
 ];
 
-// Função para obter estilo responsivo baseado na altura em em
-const getHeightStyle = (height?: number) => {
-  const baseHeight = height || 2;
-  return {
-    height: `${baseHeight}em`
-  };
-};
-
 export default function PlatformCarousel() {
+  // Duplicação simples para loop perfeito
+  const trackItems = [...platforms, ...platforms];
+
   return (
-    <div className="w-full overflow-hidden mt-8 sm:mt-12 lg:mt-16">
-      <div className="text-center mb-6 sm:mb-8">
-        <div className="flex items-center justify-center gap-2 sm:gap-3">
-          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></div>
-          <p className="text-xs sm:text-sm font-medium text-white/60">
-            Integração com as principais plataformas
-          </p>
-        </div>
-      </div>
-      
+    <div className="relative w-full overflow-hidden mt-3 sm:mt-6 lg:mt-6">
       <div className="relative overflow-hidden py-2 sm:py-4">
-        {/* Continuous scrolling animation */}
-        <div className="flex animate-scroll whitespace-nowrap">
-          {/* First set */}
-          {platforms.map((platform, index) => (
+        {/* Track animado com Tailwind: mais lento no mobile, mais rápido no desktop */}
+        <div
+          className="flex min-w-max whitespace-nowrap will-change-transform items-center animate-infinite-scroll-mobile sm:animate-infinite-scroll"
+        >
+          {trackItems.map((plat, idx) => (
             <div
-              key={`first-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4 sm:mx-6 lg:mx-8"
+              key={idx}
+              className={`
+                flex-shrink-0 flex items-center justify-center
+                mx-4 sm:mx-6 lg:mx-8
+                ${plat.heightClasses}
+              `}
             >
               <img
-                src={platform.logo}
-                alt={platform.name}
-                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
-                style={getHeightStyle(platform.height)}
-              />
-            </div>
-          ))}
-          
-          {/* Second set for seamless loop */}
-          {platforms.map((platform, index) => (
-            <div
-              key={`second-${index}`}
-              className="flex-shrink-0 flex items-center justify-center mx-4 sm:mx-6 lg:mx-8"
-            >
-              <img
-                src={platform.logo}
-                alt={platform.name}
-                className="w-auto object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
-                style={getHeightStyle(platform.height)}
+                src={plat.logo}
+                alt={plat.name}
+                className="
+                  h-full w-auto object-contain
+                  grayscale opacity-60 hover:opacity-80
+                  transition-opacity duration-300
+                  mx-auto
+                "
+                style={{ display: 'block' }}
               />
             </div>
           ))}
         </div>
-        
-        {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute top-0 left-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-r from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
-        <div className="absolute top-0 right-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-l from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
+
+        {/* Gradientes para o fade nas bordas */}
+        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-[#06070e] via-[#06070e]/80 to-transparent pointer-events-none" />
       </div>
     </div>
   );
