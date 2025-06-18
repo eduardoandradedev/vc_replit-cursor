@@ -31,7 +31,7 @@ export default function ServiceDescriptionSection() {
   ];
 
   return (
-    <section className="py-24 bg-slate-800/50">
+    <section className="py-16 md:py-24 bg-slate-800/50">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
@@ -41,7 +41,7 @@ export default function ServiceDescriptionSection() {
               </span>
               <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"> escalar com precisão</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
+            <p className="text-base md:text-xl text-gray-300 max-w-4xl mx-auto">
               Implementação completa que resolve todos os problemas de tracking do seu negócio.
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function ServiceDescriptionSection() {
           </div>
           
           <Card className="backdrop-blur-glass border-slate-700/50">
-            <CardContent className="p-10 md:p-16">
+            <CardContent className="px-6 md:px-16 py-10 md:py-16">
               <div className="text-center mb-12">
                 <h3 className="text-3xl font-bold text-white mb-4">
                   Tudo que está incluído:
@@ -74,7 +74,7 @@ export default function ServiceDescriptionSection() {
                     <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-gray-300 text-lg leading-relaxed">{feature}</span>
+                    <span className="text-gray-300 text-base md:text-lg leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>

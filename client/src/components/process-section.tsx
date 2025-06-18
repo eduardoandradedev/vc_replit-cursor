@@ -13,7 +13,7 @@ export default function ProcessSection() {
       number: 2,
       icon: Search,
       title: "Nosso time avalia seu perfil",
-      description: "(sem auditoria gratuita) - analisamos se há fit para nossa solução."
+      description: "Realizamos uma análise de qualificação para garantir que nossa solução é a ideal para o seu negócio."
     },
     {
       number: 3,
@@ -53,17 +53,17 @@ export default function ProcessSection() {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-white mb-6">{step.title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed">{step.description}</p>
+                <p className="text-gray-300 text-base leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
           
           <Card className="backdrop-blur-glass border-yellow-600/50 bg-gradient-to-br from-yellow-900/20 to-orange-900/20">
-            <CardContent className="p-12 text-center">
+            <CardContent className="p-6 md:p-16 text-center">
               <div className="w-20 h-20 bg-yellow-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-yellow-500/30">
                 <div className="text-3xl">⚡</div>
               </div>
-              <p className="text-xl text-yellow-100 font-medium leading-relaxed max-w-3xl mx-auto">
+              <p className="text-base md:text-lg text-yellow-100 font-medium leading-relaxed max-w-3xl mx-auto">
                 <strong className="text-white">Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
                 Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.
               </p>

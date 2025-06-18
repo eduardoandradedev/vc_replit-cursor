@@ -50,16 +50,16 @@ export default function Landing() {
               <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
             </div>
             
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              Rastreamento Profissional para E-commerces que faturam R$ 50K+/mês<br />
+            <p className="text-gray-400 text-sm md:text-lg leading-loose mb-8">
+              Rastreamento Profissional para E-commerces que faturam acima de R$ 100K+/mês<br />
               <span className="text-orange-400">Dados reais que alimentam o algoritmo de verdade.</span>
             </p>
             
-            <div className="flex flex-wrap justify-center gap-8 text-gray-500 text-sm mb-8">
-              <span>© 2024 Tracking Pro</span>
-              <span>•</span>
+            <div className="flex flex-wrap justify-center gap-4 text-gray-500 text-sm mb-8">
+              <span>© 2022 Tracking Pro</span>
+              <span className="hidden sm:inline">•</span>
               <span>Implementação Profissional</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>Poucos Clientes/Mês</span>
             </div>
             

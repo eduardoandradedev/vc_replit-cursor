@@ -109,14 +109,14 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
   return (
     <section id="contact-form" className="py-16 md:py-24 bg-slate-800/50">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="mb-6 md:mb-8 lg:mb-12 text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.20] drop-shadow-md">
               <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
                 Solicite contato com nosso time
               </span>
             </h2>
-            <p className="text-lg md:text-x2 text-gray-300 leading-relaxed px-4">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed px-4">
               Preencha os dados abaixo para avaliarmos se está elegível para nossa solução.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-6 md:mt-8"></div>
