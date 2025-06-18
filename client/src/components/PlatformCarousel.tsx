@@ -31,7 +31,7 @@ export default function PlatformCarousel() {
   const trackItems = [...platforms, ...platforms];
 
   return (
-    <div className="relative w-full overflow-hidden mt-3 sm:mt-6 lg:mt-6">
+    <div className="relative w-full overflow-hidden mt-6 sm:mt-6 lg:mt-6">
       <div className="relative overflow-hidden py-2 sm:py-4">
         {/* Track animado com Tailwind: mais lento no mobile, mais rápido no desktop */}
         <div

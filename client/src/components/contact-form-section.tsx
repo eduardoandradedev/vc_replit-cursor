@@ -59,6 +59,21 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       return;
     }
 
+    // Additional security checks
+    const honeypotField = (document.querySelector('input[name="website"]') as HTMLInputElement)?.value;
+    if (honeypotField) {
+      console.log('🛡️ Bot detected via honeypot');
+      setError('Erro de validação. Tente novamente.');
+      return;
+    }
+
+    // Rate limiting per session
+    const lastSubmit = sessionStorage.getItem('lastSubmit');
+    if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) {
+      setError('Aguarde 30 segundos antes de enviar novamente.');
+      return;
+    }
+
     setIsSubmitting(true);
     setError(null);
 
@@ -66,11 +81,46 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       // Track form submission attempt
       trackEvent('form_submit_attempt', 'lead_form', 'contact');
 
-      const response = await apiRequest('POST', '/api/leads', data);
+      // DEBUG LOG: Form data being sent
+      console.log('🐛 DEBUG: Form data to send:', data);
+      
+      // Send to webhook (URL ofuscada por segurança)
+      const webhookUrl = atob('aHR0cHM6Ly9uOG4tbjhuLnppam9icy5lYXN5cGFuZWwuaG9zdC93ZWJob29rLzg5N2YzOWY1LTE5NTYtNDE0Ny04OGU0LTlkNDhiNDRiNjIzNA==');
+      
+      // DEBUG LOG: Webhook URL (ofuscada nos logs)
+      console.log('🐛 DEBUG: Sending to webhook:', webhookUrl.substring(0, 30) + '...');
+      
+              const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: JSON.stringify({
+            ...data,
+            timestamp: new Date().toISOString(),
+            source: 'landing_page',
+            domain: window.location.hostname,
+            userAgent: navigator.userAgent.substring(0, 50), // Truncated for privacy
+            referrer: document.referrer || 'direct',
+            sessionId: crypto.randomUUID() // Unique session identifier
+          })
+        });
+
+      // DEBUG LOG: Response details
+      console.log('🐛 DEBUG: Response status:', response.status);
+      console.log('🐛 DEBUG: Response headers:', Object.fromEntries(response.headers.entries()));
+      
+      const responseText = await response.text();
+      console.log('🐛 DEBUG: Response body:', responseText);
       
       if (response.ok) {
         // Track successful submission
         trackEvent('form_submit_success', 'lead_form', 'contact');
+        
+        // Store submission timestamp for rate limiting
+        sessionStorage.setItem('lastSubmit', Date.now().toString());
         
         // Reset form
         form.reset();
@@ -80,15 +130,26 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
         
         // Call onSuccess callback
         onSuccess();
+        
+        console.log('✅ DEBUG: Form submitted successfully to n8n webhook');
+      } else {
+        throw new Error(`Webhook responded with status ${response.status}: ${responseText}`);
       }
     } catch (err: any) {
-      console.error('Form submission error:', err);
+      console.error('🔴 DEBUG: Form submission error:', err);
+      console.error('🔴 DEBUG: Error details:', {
+        message: err.message,
+        stack: err.stack,
+        name: err.name
+      });
       
       // Track form submission error
       trackEvent('form_submit_error', 'lead_form', 'contact');
       
       if (err.message.includes('400')) {
         setError('Dados inválidos. Verifique os campos e tente novamente.');
+      } else if (err.message.includes('CORS')) {
+        setError('Erro de conectividade. Tente novamente em alguns instantes.');
       } else {
         setError('Erro ao enviar formulário. Tente novamente.');
       }
@@ -311,7 +372,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
                   ) : (
                     <>
                       <Send className="mr-1 md:mr-3 h-5 w-5" />
-                      Solicitar contato com especialista
+                      Solicitar especialista
                     </>
                   )}
                 </Button>

@@ -5,6 +5,7 @@ import ProblemSection from "@/components/problem-section";
 import ProcessSection from "@/components/process-section";
 import ContactFormSection from "@/components/contact-form-section";
 import ConfirmationSection from "@/components/confirmation-section";
+import FloatingCTA from "@/components/FloatingCTA";
 import { useState } from "react";
 import ReasonsSection from "@/components/ReasonsSection";
 import logoPath from "@assets/logo-e2.png";
@@ -23,7 +24,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen mt-6 md:mt-10">
+    <div className="min-h-screen mt-0">
       <HeroSection />
       <ReasonsSection />  
       <TargetAudienceSection />
@@ -36,6 +37,9 @@ export default function Landing() {
       {showConfirmation && (
         <ConfirmationSection />
       )}
+      
+      {/* Botão Flutuante Mobile */}
+      <FloatingCTA />
       
       {/* Footer */}
       <footer className="bg-slate-900 border-t border-slate-800 text-white py-16">

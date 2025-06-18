@@ -1,0 +1,292 @@
+{
+  "nodes": [
+    {
+      "id": "webhook-lead-capture",
+      "name": "Webhook - Captura Lead",
+      "type": "n8n-nodes-base.webhook",
+      "position": [100, 200],
+      "webhookId": "897f39f5-1956-4147-88e4-9d48b44b6234",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook/897f39f5-1956-4147-88e4-9d48b44b6234",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "validate-data",
+      "name": "Validar Dados",
+      "type": "n8n-nodes-base.function",
+      "position": [300, 200],
+      "parameters": {
+        "functionCode": "// Validar dados obrigatórios\nconst requiredFields = ['name', 'whatsapp', 'storeUrl', 'monthlyRevenue', 'platform', 'trafficInvestment', 'agreement'];\n\nfor (const field of requiredFields) {\n  if (!$json.body[field]) {\n    throw new Error(`Campo obrigatório ausente: ${field}`);\n  }\n}\n\n// Limpar e formatar dados\nconst cleanData = {\n  name: $json.body.name.trim(),\n  whatsapp: $json.body.whatsapp.replace(/\\D/g, ''), // Remove caracteres não numéricos\n  store_url: $json.body.storeUrl.toLowerCase().trim(),\n  monthly_revenue: $json.body.monthlyRevenue,\n  platform: $json.body.platform,\n  traffic_investment: $json.body.trafficInvestment,\n  agreement: $json.body.agreement,\n  source: $json.body.source || 'landing_page',\n  domain: $json.body.domain,\n  user_agent: $json.body.userAgent,\n  referrer: $json.body.referrer,\n  session_id: $json.body.sessionId\n};\n\nreturn [{ json: cleanData }];"
+      }
+    },
+    {
+      "id": "supabase-insert",
+      "name": "Supabase - Inserir Lead",
+      "type": "n8n-nodes-base.supabase",
+      "position": [500, 200],
+      "parameters": {
+        "operation": "insert",
+        "table": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{ $json.name }}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $json.whatsapp }}"
+            },
+            {
+              "fieldId": "store_url",
+              "fieldValue": "={{ $json.store_url }}"
+            },
+            {
+              "fieldId": "monthly_revenue",
+              "fieldValue": "={{ $json.monthly_revenue }}"
+            },
+            {
+              "fieldId": "platform",
+              "fieldValue": "={{ $json.platform }}"
+            },
+            {
+              "fieldId": "traffic_investment",
+              "fieldValue": "={{ $json.traffic_investment }}"
+            },
+            {
+              "fieldId": "agreement",
+              "fieldValue": "={{ $json.agreement }}"
+            },
+            {
+              "fieldId": "source",
+              "fieldValue": "={{ $json.source }}"
+            },
+            {
+              "fieldId": "domain",
+              "fieldValue": "={{ $json.domain }}"
+            },
+            {
+              "fieldId": "user_agent",
+              "fieldValue": "={{ $json.user_agent }}"
+            },
+            {
+              "fieldId": "referrer",
+              "fieldValue": "={{ $json.referrer }}"
+            },
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $json.session_id }}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "check-score",
+      "name": "Verificar Score",
+      "type": "n8n-nodes-base.if",
+      "position": [700, 200],
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.score }}",
+              "operation": "largerEqual",
+              "value2": 70
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "whatsapp-high-priority",
+      "name": "WhatsApp - Alta Prioridade",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [900, 100],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.whatsapp.com/send", 
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "🚀 Olá {{ $json.name }}! Vi que você tem um e-commerce que fatura {{ $json.monthly_revenue.replace('k', ' mil').replace('+', ' ou mais') }} por mês na plataforma {{ $json.platform }}. \n\nSeu perfil é EXATO para nossa solução de Rastreamento Profissional! \n\nQuando podemos conversar sobre como aumentar a precisão dos seus dados e escalar suas campanhas? \n\n📱 Responda aqui mesmo para agendar."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "whatsapp-standard",
+      "name": "WhatsApp - Padrão",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [900, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.whatsapp.com/send",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "Olá {{ $json.name }}! Obrigado pelo interesse em nossa solução de Rastreamento Profissional. \n\nEm breve nossa equipe entrará em contato para apresentar como podemos ajudar seu e-commerce {{ $json.store_url }} a ter dados mais precisos. \n\nAguarde nosso retorno! 📊"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "update-status-contacted",
+      "name": "Atualizar Status - Contatado",
+      "type": "n8n-nodes-base.supabase",
+      "position": [1100, 200],
+      "parameters": {
+        "operation": "update",
+        "table": "leads",
+        "filterType": "manual",
+        "matchingColumns": [
+          {
+            "column": "uuid",
+            "value": "={{ $json.uuid }}"
+          }
+        ],
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "contacted"
+            },
+            {
+              "fieldId": "contacted_at",
+              "fieldValue": "={{ new Date().toISOString() }}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "webhook-response",
+      "name": "Resposta Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [1300, 200],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": true,\n  \"message\": \"Lead processado com sucesso\",\n  \"leadId\": \"{{ $json.uuid }}\",\n  \"score\": {{ $json.score }}\n}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    },
+    {
+      "id": "error-handler",
+      "name": "Tratamento de Erro",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [700, 400],
+      "parameters": {
+        "respondWith": "json", 
+        "responseBody": "{\n  \"success\": false,\n  \"message\": \"Erro ao processar lead\",\n  \"error\": \"{{ $json.error.message }}\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      }
+    }
+  ],
+  "connections": {
+    "webhook-lead-capture": {
+      "main": [
+        [
+          {
+            "node": "validate-data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "validate-data": {
+      "main": [
+        [
+          {
+            "node": "supabase-insert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "supabase-insert": {
+      "main": [
+        [
+          {
+            "node": "check-score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check-score": {
+      "main": [
+        [
+          {
+            "node": "whatsapp-high-priority",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "whatsapp-standard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "whatsapp-high-priority": {
+      "main": [
+        [
+          {
+            "node": "update-status-contacted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "whatsapp-standard": {
+      "main": [
+        [
+          {
+            "node": "update-status-contacted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update-status-contacted": {
+      "main": [
+        [
+          {
+            "node": "webhook-response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+} 

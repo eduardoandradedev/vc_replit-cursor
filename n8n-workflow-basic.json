@@ -1,0 +1,140 @@
+{
+  "name": "Lead Capture - BÁSICO",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "897f39f5-1956-4147-88e4-9d48b44b6234",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "71c98f4e-a79b-49cd-a44c-8b9cf3f6ec11",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "897f39f5-1956-4147-88e4-9d48b44b6234"
+    },
+    {
+      "parameters": {
+        "resource": "rows",
+        "table": {
+          "__rl": true,
+          "value": "leads",
+          "mode": "list",
+          "cachedResultName": "leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.name }}",
+            "whatsapp": "={{ $json.whatsapp }}",
+            "store_url": "={{ $json.storeUrl }}",
+            "monthly_revenue": "={{ $json.monthlyRevenue }}",
+            "platform": "={{ $json.platform }}",
+            "traffic_investment": "={{ $json.trafficInvestment }}",
+            "agreement": "={{ $json.agreement }}",
+            "timestamp": "={{ $json.timestamp }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "id": "8d234af2-9f6b-4c32-8b55-6c1a2a3b4c5d",
+      "name": "Supabase - Insert Lead",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "credentials": {
+        "supabaseApi": {
+          "id": "1",
+          "name": "Supabase - Seu Projeto"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { success: true, message: 'Lead capturado com sucesso!', leadId: $('Supabase - Insert Lead').item.json.id } }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "2a3b4c5d-6e7f-8g9h-0i1j-2k3l4m5n6o7p",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.webhookResponse",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { success: false, error: 'Erro ao processar lead', details: $json.message || 'Erro desconhecido' } }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "3b4c5d6e-7f8g-9h0i-1j2k-3l4m5n6o7p8q",
+      "name": "Webhook Response Error",
+      "type": "n8n-nodes-base.webhookResponse",
+      "typeVersion": 1,
+      "position": [680, 480]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Insert Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Insert Lead": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "basic-lead-capture",
+  "tags": []
+} 

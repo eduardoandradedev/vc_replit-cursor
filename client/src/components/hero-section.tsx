@@ -19,7 +19,7 @@ export default function HeroSection() {
       <ParticleBackground className="z-0" />
 
       {/* Navegação */}
-      <nav className="absolute top-0 left-0 right-0 p-4 md:p-6 z-20">
+      <nav className="absolute top-0 left-0 right-0 px-4 py-6 md:p-12 z-20">
         <div className="container mx-auto flex items-center justify-between">
           <img 
             src={logoPath} 
@@ -43,7 +43,7 @@ export default function HeroSection() {
       <div className="relative z-10 container mt-8 sm:mt-12 lg:mt-24 mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-6 md:pb-8">
         <div className="mx-auto max-w-5xl text-center">
           {/* Título */}
-          <h1 className="mb-6 md:mb-8 lg:mb-12 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.10] drop-shadow-md">
+          <h1 className="mt-5 mb-6 md:mb-8 lg:mb-12 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.10] drop-shadow-md">
             <span className="bg-gradient-to-r from-[#e3e3e3] to-[#b0b0b0] bg-clip-text text-transparent">
               Seus anúncios vendem.
             </span>
@@ -55,10 +55,7 @@ export default function HeroSection() {
 
           {/* Subtítulo */}
           <p className="mx-auto mb-8 md:mb-12 max-w-4xl text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-relaxed xl:leading-[1.80] text-gray-300/70 px-4">
-            Para e-commerces que já faturam, investem em mídia e querem escalar
-            com segurança. Nossa agência implementa rastreamento profissional
-            Web + Server, entregando dados que alimentam a performance de
-            verdade.
+          Rastreamento Web + Server para quem fatura e valoriza dados precisos. Escale com dados, escale com segurança!
           </p>
 
           {/* ✨ BOTÃO CTA COM ESTILO DA IMAGEM ✨ */}
@@ -66,6 +63,7 @@ export default function HeroSection() {
             onClick={scrollToForm}
             size="lg"
             className="
+              hidden md:inline-flex
               bg-gradient-to-r from-orange-500 to-orange-600 
               text-white text-lg font-semibold 
               px-8 py-4 rounded-xl
