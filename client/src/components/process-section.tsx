@@ -63,7 +63,7 @@ export default function ProcessSection() {
               <div className="w-20 h-20 bg-yellow-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-yellow-500/30">
                 <div className="text-3xl">⚡</div>
               </div>
-              <p className="text-base md:text-lg text-yellow-100 font-medium leading-relaxed max-w-3xl mx-auto">
+              <p className="text-base md:text-xl text-yellow-100 font-medium leading-relaxed max-w-3xl mx-auto">
                 <strong className="text-white">Nós não somos uma agência comum. Não aceitamos qualquer projeto.</strong><br />
                 Trabalhamos com poucos clientes por mês para garantir entrega de alto nível.
               </p>

@@ -7,7 +7,7 @@ import ContactFormSection from "@/components/contact-form-section";
 import ConfirmationSection from "@/components/confirmation-section";
 import { useState } from "react";
 import ReasonsSection from "@/components/ReasonsSection";
-import logoPath from "@assets/logoTrackerPro.png";
+import logoPath from "@assets/logo-e2.png";
 
 export default function Landing() {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -23,7 +23,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-6 md:mt-10">
       <HeroSection />
       <ReasonsSection />  
       <TargetAudienceSection />
@@ -45,7 +45,7 @@ export default function Landing() {
               <img 
                 src={logoPath} 
                 alt="Tracking Pro" 
-                className="h-12 md:h-16 w-auto mx-auto mb-4"
+                className="h-6 md:h-7 w-auto mx-auto mb-4"
               />
               <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto"></div>
             </div>

@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import PlatformCarousel from "@/components/PlatformCarousel";
-import logoPath from "@assets/logoTrackerPro.png";
+import logoPath from "@assets/logo-e2.png";
 
 export default function HeroSection() {
   const scrollToForm = () => {
@@ -24,7 +24,7 @@ export default function HeroSection() {
           <img 
             src={logoPath} 
             alt="Tracking Pro" 
-            className="h-8 md:h-10 w-auto"
+            className="h-6 md:h-8 w-auto"
           />
 
           <Button
