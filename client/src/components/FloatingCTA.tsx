@@ -22,7 +22,7 @@ export default function FloatingCTA() {
   return (
     <div 
       className={`
-        fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[60]
+        fixed bottom-16 left-1/2 transform -translate-x-1/2 z-[60]
         md:hidden
         transition-all duration-500 ease-out
         ${showFloatingButton 

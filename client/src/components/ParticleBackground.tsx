@@ -53,18 +53,16 @@ export const ParticleBackground = ({
         }}
       ></div>
 
-      {/* Contêiner das partículas '$' geradas dinamicamente */}
+      {/* Contêiner das partículas '$' geradas dinamicamente - DESABILITADO */}
+      {/* 
       <div className="absolute inset-0">
         {particles.map(p => (
-          // ✨ 2. RENDERIZANDO O SÍMBOLO '$' ✨
           <div
             key={p.id}
-            // Removemos 'bg-white' e 'rounded-full' e adicionamos classes de texto.
             className={`particle absolute text-slate-500 font-bold ${p.animationType}`}
             style={{
               left: p.left,
               bottom: p.bottom,
-              // ✨ 3. APLICANDO O TAMANHO DA FONTE ✨
               fontSize: `${p.size}px`,
               opacity: p.opacity,
               animationDelay: p.animationDelay,
@@ -74,6 +72,7 @@ export const ParticleBackground = ({
           </div>
         ))}
       </div>
+      */}
     </div>
   );
 };
