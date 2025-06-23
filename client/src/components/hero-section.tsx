@@ -55,7 +55,7 @@ export default function HeroSection() {
 
           {/* Subtítulo */}
           <p className="mx-auto mb-8 md:mb-12 max-w-4xl text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-relaxed xl:leading-[1.80] text-gray-300/70 px-4">
-          Rastreamento Web + Server para quem fatura e valoriza dados precisos. Escale com dados, escale com segurança!
+          Chega de perder dinheiro com dados errados. Ative o rastreamento Web + Server e escale seu e-commerce de forma segura, inteligente e muito mais lucrativa. Implemente tracking profissional que alimenta o algoritmo de verdade.
           </p>
 
           {/* ✨ BOTÃO CTA COM ESTILO DA IMAGEM ✨ */}
@@ -86,9 +86,8 @@ export default function HeroSection() {
             `}
         >
           {[
-            "Implementação Profissional",
-            "Negócios R$ 50K+/mês",
-            "Poucos Clientes/Mês",
+            "Alimente o algoritmo com dados reais",
+            "Maximize seu ROAS e aumente seu faturamento",
             "Integração com as principais plataformas"
           ].map(item => (
             <span key={item} className="flex items-center gap-2">

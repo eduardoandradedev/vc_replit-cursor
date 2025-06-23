@@ -55,7 +55,7 @@ export default function Landing() {
             </div>
             
             <p className="text-gray-400 text-sm md:text-lg leading-loose mb-8">
-              Rastreamento Profissional para E-commerces que faturam acima de R$ 100K+/mês<br />
+              Escale seu e-commerce de forma segura, inteligente e muito mais lucrativa.<br />
               <span className="text-orange-400">Dados reais que alimentam o algoritmo de verdade.</span>
             </p>
             

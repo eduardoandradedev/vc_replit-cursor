@@ -28,23 +28,23 @@ export default function TargetAudienceSection() {
                 <ul className="space-y-6">
                   <li className="flex items-start gap-4">
                     <CheckCircle className="text-orange-400 w-6 h-6 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300 text-base md:text-lg">Seu e-commerce fatura acima de <strong className="text-white">R$ 50 mil/mês</strong></span>
+                    <span className="text-gray-300 text-base md:text-[16px]">Suas campanhas estão instáveis e seu Custo por Cliente (CAC) só aumenta</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <CheckCircle className="text-orange-400 w-6 h-6 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300 text-base md:text-lg">Você investe constantemente em tráfego pago</span>
+                    <span className="text-gray-300 text-base md:text-[16px]">Você investe pesado em tráfego, mas o retorno real é uma incógnita</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <CheckCircle className="text-orange-400 w-6 h-6 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300 text-base md:text-lg">Suas métricas não batem entre plataformas</span>
+                    <span className="text-gray-300 text-base md:text-[16px]">As vendas dos anúncios e as da sua loja simplesmente não batem</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <CheckCircle className="text-orange-400 w-6 h-6 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300 text-base md:text-lg">Suas campanhas caíram de performance sem motivo aparente</span>
+                    <span className="text-gray-300 text-base md:text-[16px]">Suas campanhas caíram de performance sem motivo aparente</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <CheckCircle className="text-orange-400 w-6 h-6 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300 text-base md:text-lg">Já contratou "instalações básicas" e continua cego</span>
+                    <span className="text-gray-300 text-base md:text-[16px]">Você já gastou com tudo: de plugins baratos a agências caras, e continua no escuro</span>
                   </li>
                 </ul>
               </CardContent>
@@ -60,11 +60,14 @@ export default function TargetAudienceSection() {
                   </h3>
                 </div>
                 <div className="space-y-6">
-                  <p className="text-red-200 font-medium text-base md:text-lg">
+                  <p className="text-red-200 font-medium text-base md:text-[16px]">
                     Se você ainda precisa confirmar se o rastreamento está quebrado, esta solução <strong className="text-white">não é para você.</strong>
                   </p>
-                  <p className="text-red-300 text-base md:text-lg">
+                  <p className="text-red-300 text-base md:text-[16px]">
                     Nós atuamos com <strong className="text-white">negócios maduros que sabem o valor de dados reais.</strong>
+                  </p>
+                  <p className="text-red-300 text-base md:text-[16px]">
+                  Para garantir máxima dedicação e resultados reais para cada cliente, <strong className="text-white"> aceitamos um número limitado de novos projetos por mês.</strong>
                   </p>
                 </div>
               </CardContent>
