@@ -13,7 +13,76 @@ import { Loader2, AlertCircle, Send } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { insertLeadSchema, type InsertLead } from "@shared/schema";
 import { trackEvent } from "@/lib/analytics";
+import { generateHmacSignature, generateTimestamp, generateRequestId } from "@/lib/security";
 import SuccessPopup from "./SuccessPopup";
+
+// Utilitário de log seguro que não expõe dados sensíveis
+const safeLog = {
+  // Determina se estamos em ambiente de produção
+  isProd: () => {
+    return import.meta.env.PROD === true;
+  },
+  
+  // Log informativo - não exibe em produção
+  info: (message: string, data?: any) => {
+    if (safeLog.isProd()) return;
+    
+    if (data) {
+      console.log(`ℹ️ ${message}`, safeLog.sanitize(data));
+    } else {
+      console.log(`ℹ️ ${message}`);
+    }
+  },
+  
+  // Log de erro - versão sanitizada em produção
+  error: (message: string, error?: any) => {
+    if (safeLog.isProd()) {
+      // Em produção, log apenas mensagem sem detalhes sensíveis
+      console.error(`❌ ${message}`);
+      return;
+    }
+    
+    if (error) {
+      console.error(`❌ ${message}`, error);
+    } else {
+      console.error(`❌ ${message}`);
+    }
+  },
+  
+  // Sanitiza dados sensíveis
+  sanitize: (data: any): any => {
+    if (!data) return data;
+    
+    // Para strings, não há necessidade de sanitização profunda
+    if (typeof data === 'string') return data;
+    
+    // Para objetos, sanitizar recursivamente
+    if (typeof data === 'object') {
+      const sanitized = { ...data };
+      
+      // Campos sensíveis a serem mascarados
+      const sensitiveFields = ['name', 'whatsapp', 'storeUrl', 'password', 'token', 'key', 'secret'];
+      
+      for (const key in sanitized) {
+        // Mascara campos sensíveis
+        if (sensitiveFields.includes(key.toLowerCase())) {
+          if (typeof sanitized[key] === 'string') {
+            // Preserva o tipo de dado mas mascara o conteúdo
+            sanitized[key] = sanitized[key].length > 0 ? '[REDACTED]' : '';
+          }
+        } 
+        // Sanitiza objetos aninhados
+        else if (typeof sanitized[key] === 'object' && sanitized[key] !== null) {
+          sanitized[key] = safeLog.sanitize(sanitized[key]);
+        }
+      }
+      
+      return sanitized;
+    }
+    
+    return data;
+  }
+};
 
 interface ContactFormSectionProps {
   onSuccess: () => void;
@@ -62,7 +131,7 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
     // Additional security checks
     const honeypotField = (document.querySelector('input[name="website"]') as HTMLInputElement)?.value;
     if (honeypotField) {
-      console.log('🛡️ Bot detected via honeypot');
+      safeLog.info('Bot detected via honeypot');
       setError('Erro de validação. Tente novamente.');
       return;
     }
@@ -81,39 +150,69 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
       // Track form submission attempt
       trackEvent('form_submit_attempt', 'lead_form', 'contact');
 
-      // DEBUG LOG: Form data being sent
-      console.log('🐛 DEBUG: Form data to send:', data);
+      // Log sanitizado dos dados do formulário (apenas em desenvolvimento)
+      safeLog.info('Form submission attempt', { 
+        formId: 'contact-form',
+        hasData: !!data
+      });
       
-      // Send to webhook (URL ofuscada por segurança)
-      const webhookUrl = atob('aHR0cHM6Ly9uOG4tbjhuLnppam9icy5lYXN5cGFuZWwuaG9zdC93ZWJob29rLzg5N2YzOWY1LTE5NTYtNDE0Ny04OGU0LTlkNDhiNDRiNjIzNA==');
+      // Get webhook URL and secret from environment variables
+      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
+      const webhookSecret = import.meta.env.VITE_WEBHOOK_SECRET;
       
-      // DEBUG LOG: Webhook URL (ofuscada nos logs)
-      console.log('🐛 DEBUG: Sending to webhook:', webhookUrl.substring(0, 30) + '...');
+      if (!webhookUrl) {
+        safeLog.error('Missing required webhook URL configuration');
+        setError('Erro de configuração. Entre em contato com o suporte.');
+        setIsSubmitting(false);
+        return;
+      }
       
-              const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-          },
-          body: JSON.stringify({
-            ...data,
-            timestamp: new Date().toISOString(),
-            source: 'landing_page',
-            domain: window.location.hostname,
-            userAgent: navigator.userAgent.substring(0, 50), // Truncated for privacy
-            referrer: document.referrer || 'direct',
-            sessionId: crypto.randomUUID() // Unique session identifier
-          })
-        });
+      if (!webhookSecret) {
+        safeLog.error('Missing required webhook secret configuration');
+        setError('Erro de configuração. Entre em contato com o suporte.');
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Log seguro da tentativa de envio (sem expor a URL completa)
+      safeLog.info('Sending to webhook');
+      
+      // Preparar o payload com metadados de segurança
+      const timestamp = generateTimestamp();
+      const requestId = generateRequestId();
+      
+      const payload = {
+        ...data,
+        timestamp,
+        source: 'landing_page',
+        domain: window.location.hostname,
+        userAgent: navigator.userAgent.substring(0, 50), // Truncated for privacy
+        referrer: document.referrer || 'direct',
+        requestId
+      };
+      
+      // Gerar assinatura HMAC para autenticação
+      const signature = await generateHmacSignature(payload, webhookSecret);
+      
+      // Enviar requisição com headers de autenticação
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-Webhook-Signature': signature,
+          'X-Request-Timestamp': timestamp,
+          'X-Request-ID': requestId,
+          'X-API-Source': 'e2no-landing'
+        },
+        body: JSON.stringify(payload)
+      });
 
-      // DEBUG LOG: Response details
-      console.log('🐛 DEBUG: Response status:', response.status);
-      console.log('🐛 DEBUG: Response headers:', Object.fromEntries(response.headers.entries()));
+      // Log seguro da resposta (apenas código de status)
+      safeLog.info(`Response status: ${response.status}`);
       
       const responseText = await response.text();
-      console.log('🐛 DEBUG: Response body:', responseText);
       
       if (response.ok) {
         // Track successful submission
@@ -131,15 +230,14 @@ export default function ContactFormSection({ onSuccess }: ContactFormSectionProp
         // Call onSuccess callback
         onSuccess();
         
-        console.log('✅ DEBUG: Form submitted successfully to n8n webhook');
+        safeLog.info('Form submitted successfully');
       } else {
         throw new Error(`Webhook responded with status ${response.status}: ${responseText}`);
       }
     } catch (err: any) {
-      console.error('🔴 DEBUG: Form submission error:', err);
-      console.error('🔴 DEBUG: Error details:', {
+      // Log de erro sanitizado
+      safeLog.error('Form submission error', {
         message: err.message,
-        stack: err.stack,
         name: err.name
       });
       
